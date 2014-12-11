@@ -3,9 +3,15 @@ var DialogControllerBase = {
   init: function () {
     console.log('DialogController.init');
   },
+  queryParams: ['location'],
+  location: null,
   title: 'Find Local Help',
   user_prompt: 'Need help with your health insurance application? Enter your ZIP code below to find appointments with local application assisters.',
   actions: {
+    scheduleAppointment: function() {
+      console.log(this);
+      this.transitionTo('available');
+    }
   },
   userInput: {
     near: 33629,

@@ -114,27 +114,49 @@
             <br />{{result.formatted_phone}}
             <p>{{maplink result}}</p>
     {{#if result.appointments_available }}
-      <button class="has_appointments">Schedule Online</button>
+    {{#link-to 'available' (query-params location=result.id) class="btn schedule-appointment-btn"}}Schedule Online{{/link-to}}
+        {{!--       <button {{action 'scheduleAppointment'}} class="has_appointments">Schedule Online</button> --}}
     {{/if}}
             </div></li>
           {{/each}}
           </ul>
           <a id="locator-next" href="">Next:{{model.next}}</a>
         </script>
-        <script type="text/x-handlebars" data-template-name="scheduler">
+        <script type="text/x-handlebars" data-template-name="available">
           <!-- selected-location-template -->
           <div class="selected-location">
+          <h3> Selected Location</h3>
             <p class="bold">{{name}}</p>
             <p>{{street_address}}</p>
-            {{#extended_address}}<p>{{extended_address}}</p>{{/extended_address}}
+            <p>{{extended_address}}</p>
             <p>{{locality}}, {{region}} {{postal_code}}</p>
             <p>{{formatted_phone}}</p>
-            <p><a href="https://maps.google.com/?q={{street_address}}%20{{locality}}%20{{region}}%20{{postal_code}}" target="_blank" title="Look up address on Google Maps">View map</a></p>
           </div>
           <!-- selected-location-template -->
 
-
-          </form>
+          <ul>
+          <li class="one-third">
+            <label>Type of Application:</label>
+            <select name="event_type">
+            <option value="1">Individual or Family</option>
+            <option value="3">Group (separate applications)</option>
+            <option value="2">Small Business (SHOP)</option>
+            </select>
+          </li>
+          <li class="one-third dateFrom">
+            <label>Date From:</label>
+            <input id="start_time" type="text">
+          </li>
+          <li class="one-third dateTo">
+            <label>Date To:</label>
+            <input id="end_time" type="text">
+          </li>
+          <li>
+          <p class="error" data-error="start-time" style="display: none;">Please make sure that the end date for your search is after the start date.</p>
+          <div id="no-results"></div>
+            <button id="event-search-btn" class="btn" type="submit">Search Appointments</button>
+          </li>
+          </ul>
         </script>
 
       </div> <!-- .row -->
