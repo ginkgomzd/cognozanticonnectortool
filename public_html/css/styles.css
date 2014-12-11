@@ -1,0 +1,54 @@
+* {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.intro-text {
+  clear: both;
+}
+
+img.logo {
+  background: #429745;
+  float: left;
+  margin-right: 15px;
+}
+
+.intro-text h3 {
+  color: #044060;
+  font-size: 2.5em;
+  text-transform: uppercase;
+}
+
+/* Not crazy about this markup; a list isn't really semantically appropriate for a form.
+ * If the markup is rewritten, these styles can go.
+ */
+ul.fields {
+  clear: both;
+  list-style: none;
+}
+
+ul.fields li.one-third {
+  display: inline-block;
+  width: 33%;
+}
+
+ul.fields li.one-third input,
+ul.fields li.one-third select {
+  display: block;
+}
+#location-search-btn-wrapper {
+  text-align: center;
+}
+
+#location-search-btn {
+  background: #044060;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-size: 1.25em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  padding: 15px;
+  text-decoration: none;
+}
+/* end styles for list markup */
+
