@@ -5,8 +5,6 @@ Connector.Router.map(function() {
   });
 });
 
-Connector.shortCircuit = true;
-
 var DialogRouteBase = {
   model: function() {
     var dialog = new Connector.Dialog();
