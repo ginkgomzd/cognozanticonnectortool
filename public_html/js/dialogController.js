@@ -8,7 +8,7 @@ var DialogControllerBase = {
   actions: {
   },
   userInput: {
-    near: null,
+    near: 33629,
     radius: 100,
   }
 }
