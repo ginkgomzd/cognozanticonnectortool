@@ -112,6 +112,9 @@
             <br />{{result.street_addres}}{{result.extended_address}}
             <br />{{result.locality}}, {{result.region}} {{result.postal_code}}
             <br />{{result.phone}}
+    {{#if result.appointments_available }}
+      <button class="has_appointments">Schedule and Appointment</button>
+    {{/if}}
             </div></li>
           {{/each}}
           </ul>
