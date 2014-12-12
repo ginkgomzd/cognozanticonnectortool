@@ -30,7 +30,10 @@ var DialogLocatorRouteBase = {
 Connector.DialogLocatorRoute = Ember.Route.extend(DialogLocatorRouteBase);
 
 var AvailableRouteBase = {
-  controllerName: 'dialog'
+  controllerName: 'dialog',
+  model: function() {
+    return this.controllerFor('dialog').get('location');
+  }
 };
 Connector.AvailableRoute = Ember.Route.extend(AvailableRouteBase);
 

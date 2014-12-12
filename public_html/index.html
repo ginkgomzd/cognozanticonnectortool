@@ -109,14 +109,13 @@
           <ul id="locator-result">
           {{#each result in model.results}}
             <li><div class="assister">{{result.name}}
-            <br />{{result.street_addres}}{{result.extended_address}}
+            <br />{{result.street_address}}{{result.extended_address}}
             <br />{{result.locality}}, {{result.region}} {{result.postal_code}}
             <br />{{result.formatted_phone}}
             <p>{{maplink result}}</p>
-    {{#if result.appointments_available }}
-    {{#link-to 'available' (query-params location=result.id) class="btn schedule-appointment-btn"}}Schedule Online{{/link-to}}
-        {{!--       <button {{action 'scheduleAppointment'}} class="has_appointments">Schedule Online</button> --}}
-    {{/if}}
+            {{#if result.appointments_available }}
+              <button {{action 'scheduleAppointment' result}} class="has_appointments">Schedule Online</button>
+            {{/if}}
             </div></li>
           {{/each}}
           </ul>
