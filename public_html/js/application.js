@@ -16,6 +16,18 @@ Ember.Handlebars.helper('maplink', function(item, additional) {
   return new Ember.Handlebars.SafeString('<a class="maplink" href="https://maps.google.com/?q='+item.street_address+'+'+item.locality+'+'+item.region+'+'+item.postal_code+'" '+ additional +' target="_blank" title="Look up address on Google Maps">View map</a>');
 });
 
+function getDate() {
+  var date = new Date().toISOString();
+  return date.substr(0,10);
+}
+
+function getNextMonthDate() {
+  var date = new Date();
+  date.setMonth(date.getMonth() + 1);
+  return date.toISOString().substr(0,10);
+}
+
+
 /***
  * Keep for reference:
  */

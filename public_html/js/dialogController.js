@@ -16,6 +16,8 @@ var DialogControllerBase = {
   userInput: {
     near: 33629,
     radius: 100,
+    start_time: getDate(),
+    end_time: getNextMonthDate()
   }
 }
 

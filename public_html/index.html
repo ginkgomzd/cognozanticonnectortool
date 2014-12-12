@@ -130,6 +130,7 @@
             <p>{{extended_address}}</p>
             <p>{{locality}}, {{region}} {{postal_code}}</p>
             <p>{{formatted_phone}}</p>
+            <p>{{maplink model}}
           </div>
           <!-- selected-location-template -->
 
@@ -144,11 +145,11 @@
           </li>
           <li class="one-third dateFrom">
             <label>Date From:</label>
-            <input id="start_time" type="text">
+            {{input type="date" id="start_time" value=userInput.start_time}}
           </li>
           <li class="one-third dateTo">
             <label>Date To:</label>
-            <input id="end_time" type="text">
+            {{input type="date" id="end_time" value=userInput.end_time}}
           </li>
           <li>
           <p class="error" data-error="start-time" style="display: none;">Please make sure that the end date for your search is after the start date.</p>
