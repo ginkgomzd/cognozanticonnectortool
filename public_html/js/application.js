@@ -13,7 +13,7 @@ Connector.Router = Ember.Router.extend({
 });
 
 Ember.Handlebars.helper('maplink', function(item, additional) {
-  return new Ember.Handlebars.SafeString('<a class="maplink" href="https://maps.google.com/?q='+item.street_address+'%20'+item.locality+'%20'+item.region+'%20'+item.postal_code+'" '+ additional +' target="_blank" title="Look up address on Google Maps">View map</a>');
+  return new Ember.Handlebars.SafeString('<a class="maplink" href="https://maps.google.com/?q='+item.street_address+'+'+item.locality+'+'+item.region+'+'+item.postal_code+'" '+ additional +' target="_blank" title="Look up address on Google Maps">View map</a>');
 });
 
 /***
