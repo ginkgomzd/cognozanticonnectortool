@@ -11,6 +11,9 @@ var DialogControllerBase = {
     scheduleAppointment: function(location) {
       this.location = location;
       this.transitionToRoute('available');
+    },
+    searchAvailableAppointments: function() {
+      this.transitionToRoute('available.appointments');
     }
   },
   userInput: {

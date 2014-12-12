@@ -154,9 +154,34 @@
           <li>
           <p class="error" data-error="start-time" style="display: none;">Please make sure that the end date for your search is after the start date.</p>
           <div id="no-results"></div>
-            <button id="event-search-btn" class="btn" type="submit">Search Appointments</button>
+            <button id="btn-search-appointments" class="btn" type="submit" {{action 'searchAvailableAppointments'}}>Search Appointments</button>
+            {{#link-to 'available.appointments'}}>Search Appointments{{/link-to}}
           </li>
           </ul>
+          <div id="appointments-results-container" class="results-container">{{outlet}}</div>
+        </script>
+        <script type="text/x-handlebars" data-template-name="available/appointments">
+          <ul id="appointments-result">
+          {{#each result in model.results}}
+            <li>
+              <div class="appointment">
+                {{result.occurrence.local_start_time}}<br />
+                {{result.occurrence.local_end_time}}
+              </div>
+              <div class="location">
+                <strong>{{result.occurrence.location.name}}</strong><br />
+                {{result.occurrence.location.street_address}}<br />
+                {{result.occurrence.location.locality}}, {{result.occurrence.location.region}} {{result.occurrence.location.postal_code}}<br />
+                {{result.occurrence.location.phone}}<br />
+                {{maplink result.occurrence.location}}
+              </div>
+            {{#if result.appointments_available }}
+              <button {{action 'scheduleAppointment' result}} class="has_appointments">Schedule Online</button>
+            {{/if}}
+            </div></li>
+          {{/each}}
+          </ul>
+          <a id="locator-next" href="">Next:{{model.next}}</a>
         </script>
 
       </div> <!-- .row -->
