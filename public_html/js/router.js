@@ -10,15 +10,16 @@ Connector.Router.map(function() {
 
 var DialogRouteBase = {
   model: function() {
-    var dialog = new Connector.Dialog();
-    return dialog;
+    return new Connector.Dialog();
   }
 };
 Connector.DialogRoute = Ember.Route.extend(DialogRouteBase);
 
+
 var DialogLocatorRouteBase = {
-  controllerName: 'dialog',
   model: function() {
+    console.log('DialogLocatorRoute.model');
+    console.dir(Connector.userInput);
     return Ember.$.ajax({
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/locations',
@@ -32,15 +33,16 @@ var DialogLocatorRouteBase = {
 Connector.DialogLocatorRoute = Ember.Route.extend(DialogLocatorRouteBase);
 
 var AvailableRouteBase = {
-  controllerName: 'dialog',
   model: function() {
-    return this.controllerFor('dialog').get('location');
+    console.log('AvailableRoute.model');
+    var available = new Connector.Available();
+    available.location = this.controllerFor('dialogLocator').get('location');
+    return available;
   }
 };
 Connector.AvailableRoute = Ember.Route.extend(AvailableRouteBase);
 
 var AvailableAppointmentsRouteBase = {
-  controllerName: 'dialog',
   model: function() {
     return Ember.$.ajax({
       type: 'GET',
@@ -48,7 +50,7 @@ var AvailableAppointmentsRouteBase = {
       crossDomain: true,
       contenType: 'application/json',
       dataType: 'json',
-      data: this.controllerFor('dialog').get('userInput')
+      data: this.controllerFor('available').get('userInput')
     });
   }
 };

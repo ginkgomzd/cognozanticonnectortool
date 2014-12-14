@@ -8,7 +8,10 @@
 <script src="js/application.js" type="text/javascript"></script>
 <script src="js/router.js" type="text/javascript"></script>
 <script src="js/dialogController.js" type="text/javascript"></script>
-<script src="js/models/dialog.js" type="text/javascript"></script>
+<script src="js/dialogModel.js" type="text/javascript"></script>
+<script src="js/dialogLocatorController.js" type="text/javascript"></script>
+<script src="js/availableController.js" type="text/javascript"></script>
+<script src="js/availableModel.js" type="text/javascript"></script>
 
 <!--/END CONNECTOR API Widget Scripts-->
 <link href="css/styles.css" type="text/css" rel="stylesheet" data-foo="bar" />
@@ -125,12 +128,12 @@
           <!-- selected-location-template -->
           <div class="selected-location">
           <h3> Selected Location</h3>
-            <p class="bold">{{name}}</p>
-            <p>{{street_address}}</p>
-            <p>{{extended_address}}</p>
-            <p>{{locality}}, {{region}} {{postal_code}}</p>
-            <p>{{formatted_phone}}</p>
-            <p>{{maplink model}}
+            <p class="bold">{{location.name}}</p>
+            <p>{{location.street_address}}</p>
+            <p>{{location.extended_address}}</p>
+            <p>{{location.locality}}, {{location.region}} {{location.postal_code}}</p>
+            <p>{{location.formatted_phone}}</p>
+            <p>{{maplink location}}</p>
           </div>
           <!-- selected-location-template -->
 
@@ -155,7 +158,6 @@
           <p class="error" data-error="start-time" style="display: none;">Please make sure that the end date for your search is after the start date.</p>
           <div id="no-results"></div>
             <button id="btn-search-appointments" class="btn" type="submit" {{action 'searchAvailableAppointments'}}>Search Appointments</button>
-            {{#link-to 'available.appointments'}}>Search Appointments{{/link-to}}
           </li>
           </ul>
           <div id="appointments-results-container" class="results-container">{{outlet}}</div>
