@@ -13,6 +13,9 @@ Connector.Router = Ember.Router.extend({
 });
 
 Ember.Handlebars.helper('maplink', function(item, additional) {
+  if (item == undefined) {
+    return console.log("no param supplied to maplink.");
+  }
   return new Ember.Handlebars.SafeString('<a class="maplink" href="https://maps.google.com/?q='+item.street_address+'+'+item.locality+'+'+item.region+'+'+item.postal_code+'" '+ additional +' target="_blank" title="Look up address on Google Maps">View map</a>');
 });
 
@@ -26,7 +29,6 @@ function getNextMonthDate() {
   date.setMonth(date.getMonth() + 1);
   return date.toISOString().substr(0,10);
 }
-
 
 /***
  * Keep for reference:
