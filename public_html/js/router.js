@@ -44,13 +44,17 @@ Connector.AvailableRoute = Ember.Route.extend(AvailableRouteBase);
 
 var AvailableAppointmentsRouteBase = {
   model: function() {
+    var data = this.controllerFor('available').get('userInput');
+    data.location = this.controllerFor('available').get('location').id;
+    data.eventy_type = 1;
+    data.available = 1; // only unreserved times
     return Ember.$.ajax({
       type: 'GET',
-      url: 'https://connector.getcoveredamerica.org/api/appointments',
+      url: 'https://connector.getcoveredamerica.org/api/occurrences',
       crossDomain: true,
       contenType: 'application/json',
       dataType: 'json',
-      data: this.controllerFor('available').get('userInput')
+      data: data
     });
   }
 };
