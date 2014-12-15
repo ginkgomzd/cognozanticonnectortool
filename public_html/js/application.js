@@ -30,6 +30,54 @@ function getNextMonthDate() {
   return date.toISOString().substr(0,10);
 }
 
+Ember.Handlebars.helper('event_time', function(datestring) {
+  if (datestring == undefined) {
+    return console.log('event_time helper: datestring not given');
+  }
+  var d = new Date(datestring);
+  console.log(d.toString());
+  var time = fmtTime(d);
+  return new Ember.Handlebars.SafeString('<div class="event_time"><h4>event_time</h4>'+time+'</div>');
+});
+
+function fmtTime(date) {
+  var h, m, tz, M = null;
+  h = date.getHours();
+  m = date.getMinutes();
+  tz = date.getTimezoneOffset();
+  M = 'AM'
+
+  if (m.length = 1) {
+    m = '0'+m;
+  }
+  if (h > 12) {
+    h = h-12;
+    M = 'PM';
+  }
+  switch (tz/60) {
+    case 5:
+      tz = 'Eastern';
+      break;
+    case 6:
+      tz = 'Central';
+      break;
+    case 7:
+      tz = 'Mountain';
+      break;
+    case 8:
+      tz = 'Pacific';
+      break;
+    case 9:
+      tz = 'Alaska';
+      break;
+    case 10:
+      tz = 'Hawaii';
+      break;
+  }
+
+  return h+':'+m+M+' '+tz;
+}
+
 /***
  * Keep for reference:
  */
