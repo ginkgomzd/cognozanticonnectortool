@@ -54,20 +54,27 @@
   </form>
 </script>
 <script type="text/x-handlebars" data-template-name="dialog/locator">
-  <ul id="locator-result">
-  {{#each result in model.results}}
-    <li><div class="assister">{{result.name}}
-    <br />{{result.street_address}}{{result.extended_address}}
-    <br />{{result.locality}}, {{result.region}} {{result.postal_code}}
-    <br />{{result.formatted_phone}}
-    <p>{{maplink result}}</p>
-    {{#if result.appointments_available }}
-      <button {{action 'scheduleAppointment' result}} class="has_appointments">Schedule Online</button>
-    {{/if}}
-    </div></li>
-  {{/each}}
-  </ul>
-  <a id="locator-next" href="">Next:{{model.next}}</a>
+  <table class="table table-striped">
+    <tbody>
+      {{#each result in model.results}}
+        <tr>
+          <td>
+            <strong>{{result.name}}</strong><br />
+            {{result.street_address}}{{result.extended_address}}<br />
+            {{result.locality}}, {{result.region}} {{result.postal_code}}<br />
+            {{result.formatted_phone}}<br />
+            {{maplink result}}
+          </td>
+          <td>
+            {{#if result.appointments_available }}
+              <button {{action 'scheduleAppointment' result}} class="btn btn-primary btn">Schedule Online</button>
+            {{/if}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <a id="locator-next" href="">TODO: Implement pagination</a>
 </script>
 <script type="text/x-handlebars" data-template-name="available">
   <!-- selected-location-template -->

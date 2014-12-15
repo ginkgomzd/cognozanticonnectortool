@@ -31,3 +31,11 @@
   padding-bottom: 15px;
   padding-top: 15px;
 }
+
+#connector-api .btn-primary {
+  background: #044060;
+}
+
+#connector-api .results-container td {
+  vertical-align: middle;
+}
