@@ -1,23 +1,23 @@
-#connector-wrapper {
+#connector-api {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-#connector-wrapper .intro-text {
+#connector-api .intro-text {
   clear: both;
 }
 
-#connector-wrapper img.logo {
+#connector-api img.logo {
   background: #429745;
   float: left;
   margin-right: 15px;
 }
 
-#connector-wrapper .intro-text h3 {
+#connector-api .intro-text h3 {
   color: #044060;
   font-size: 2.5em;
   text-transform: uppercase;
 }
 
-#connector-wrapper #location-search-btn-wrapper {
+#connector-api #location-search-btn-wrapper {
   text-align: center;
 }
