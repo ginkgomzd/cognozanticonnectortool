@@ -2,14 +2,18 @@
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-#connector-api .intro-text {
-  clear: both;
+#connector-api header {
+  margin-bottom: 15px;
+  min-height: 138px; /* to accommodate the logo */
 }
 
-#connector-api img.logo {
+#connector-api header img.logo {
   background: #429745;
   float: left;
-  margin-right: 15px;
+}
+
+#connector-api header .intro-text {
+  margin-left: 160px;
 }
 
 #connector-api .intro-text h3 {
@@ -20,4 +24,10 @@
 
 #connector-api #location-search-btn-wrapper {
   text-align: center;
+}
+
+#connector-api #assister-scheduler fieldset {
+  background: #E5E5E5;
+  padding-bottom: 15px;
+  padding-top: 15px;
 }

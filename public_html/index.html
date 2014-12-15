@@ -16,16 +16,17 @@
 
 <!-- Connector Widget Templates -->
 <script type="text/x-handlebars" >
-  <header>Get Covered Connector</header>
   {{outlet}}
 </script>
 <script type="text/x-handlebars" data-template-name="dialog">
   <form id="assister-scheduler" data-partner="">
-    <div class="intro-text">
+    <header>
       <img class="logo" src="img/logo.png" height="138" width="138">
-      <h3 class="subheading-lg">{{title}}</h3>
-      <p>{{user_prompt}}</p>
-    </div>
+      <div class="intro-text">
+        <h3 class="subheading-lg">{{title}}</h3>
+        <p>{{user_prompt}}</p>
+      </div>
+    </header>
     <fieldset class="row">
       <div class="col-sm-4 form-group">
         <label for="near">Enter Your ZIP Code:</label>
