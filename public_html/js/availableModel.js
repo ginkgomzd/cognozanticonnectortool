@@ -5,7 +5,8 @@ var AvailableBase = {
   },
   userInput: {
     start_time: getDate(),
-    end_time: getNextMonthDate()
+    end_time: getNextMonthDate(),
+    language: ''
   },
   location: {}
 };
