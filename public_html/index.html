@@ -154,8 +154,7 @@
       event_id: [{{result.event_id}}]<br />
     </div>
       <div class="appointment">
-        {{event_time result.local_start_time}}<br />
-        {{event_time result.local_end_time}}
+        {{event_time result.local_start_time result.local_end_time}}
       </div>
     {{#if result.asssiter}}
       <div class="assister">

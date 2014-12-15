@@ -30,15 +30,42 @@ function getNextMonthDate() {
   return date.toISOString().substr(0,10);
 }
 
-Ember.Handlebars.helper('event_time', function(datestring) {
-  if (datestring == undefined) {
-    return console.log('event_time helper: datestring not given');
+Ember.Handlebars.helper('event_time', function(start, end) {
+  if (start == undefined) {
+    return console.log('event_time helper: start time not given');
   }
-  var d = new Date(datestring);
-  console.log(d.toString());
-  var time = fmtTime(d);
+  var dS = new Date(start);
+  var dE = new Date(end);
+
+  var time = dayOfWeek(dS)+fmtTime(dS)+' - '+fmtTime(dE);
   return new Ember.Handlebars.SafeString('<div class="event_time"><h4>event_time</h4>'+time+'</div>');
 });
+
+function dayOfWeek(date) {
+  switch(date.getDay()) {
+    case 0:
+      return 'Sunday';
+      break;
+    case 1:
+      return 'Monday';
+      break;
+    case 2:
+      return 'Tuesday';
+      break;
+    case 3:
+      return 'Wednesday';
+      break;
+    case 4:
+      return 'Thursday';
+      break;
+    case 5:
+      return 'Friday';
+      break;
+    case 6:
+      return 'Saturday'
+      break;
+  }
+}
 
 function fmtTime(date) {
   var h, m, tz, M = null;
