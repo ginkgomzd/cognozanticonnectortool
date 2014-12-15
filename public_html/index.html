@@ -126,6 +126,7 @@
         </script>
         <script type="text/x-handlebars" data-template-name="available">
           <!-- selected-location-template -->
+          <p>DEBUG: location.id [{{location.id}}]
           <div class="selected-location">
           <h3> Selected Location</h3>
             <p class="bold">{{location.name}}</p>
@@ -166,20 +167,32 @@
           <ul id="appointments-result">
           {{#each result in model.results}}
             <li>
+            <div class="debug" style="border: 3px; border-color: red; border-style: solid;">
+            <h4>DEBUG:</h4>
+              id: [{{result.id}}]<br />
+              event_id: [{{result.event_id}}]<br />
+            </div>
               <div class="appointment">
-                {{result.occurrence.local_start_time}}<br />
-                {{result.occurrence.local_end_time}}
+                {{event_time result.local_start_time}}<br />
+                {{event_time result.local_end_time}}
               </div>
-              <div class="location">
-                <strong>{{result.occurrence.location.name}}</strong><br />
-                {{result.occurrence.location.street_address}}<br />
-                {{result.occurrence.location.locality}}, {{result.occurrence.location.region}} {{result.occurrence.location.postal_code}}<br />
-                {{result.occurrence.location.phone}}<br />
-                {{maplink result.occurrence.location}}
+            {{#if result.asssiter}}
+              <div class="assister">
+                <h4>Assister:</h4>
+                {{result.assister.last_name}}, {{result.assister.first_name}}<br />
+                {{result.assister.title}}<br />
+                {{result.assister.description}}
               </div>
-            {{#if result.appointments_available }}
-              <button {{action 'scheduleAppointment' result}} class="has_appointments">Schedule Online</button>
             {{/if}}
+                {{!-- this seems redundant since all appointments are for the same location:
+              <div class="location">
+                <strong>{{result.location.name}}</strong><br />
+                {{result.location.street_address}}<br />
+                {{result.location.locality}}, {{result.occurrence.location.region}} {{result.occurrence.location.postal_code}}<br />
+                {{result.location.phone}}<br />
+                {{maplink result.location}}
+              </div> --}}
+              <button class="select_appointment">Select</button>
             </div></li>
           {{/each}}
           </ul>
