@@ -6,7 +6,8 @@ var AvailableBase = {
   userInput: {
     start_time: getDate(),
     end_time: getNextMonthDate(),
-    language: ''
+    language: '',
+    event_type: 1,
   },
   location: {}
 };

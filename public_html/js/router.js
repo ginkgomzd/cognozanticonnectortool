@@ -37,6 +37,8 @@ var AvailableRouteBase = {
     console.log('AvailableRoute.model');
     var available = new Connector.Available();
     available.location = this.controllerFor('dialogLocator').get('location');
+    available.language = this.controllerFor('dialog').get('userInput').language;
+    console.dir(this.controllerFor('dialog').get('userInput'));
     return available;
   }
 };
