@@ -108,6 +108,17 @@ function timezoneName(date) {
   }
 }
 
+Ember.Handlebars.helper('accommodations', function(accommodations) {
+  var innerHTML = '<ul>';
+  if (accommodations !== undefined) {
+    accommodations.forEach(function(item) {
+      innerHTML += '<li>'+item.name+'</li>';
+    });
+  }
+  innerHTML += '</ul>';
+  return new Ember.Handlebars.SafeString('<div class="accommodations><h4 class="accommodations">Accommodations</h4>'+innerHTML+'</div>');
+});
+
 /***
  * Keep for reference:
  */
