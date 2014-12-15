@@ -37,7 +37,7 @@ Ember.Handlebars.helper('event_time', function(start, end) {
   var dS = new Date(start);
   var dE = new Date(end);
 
-  var time = dayOfWeek(dS)+fmtTime(dS)+' - '+fmtTime(dE);
+  var time = dayOfWeek(dS)+' '+fmtTime(dS)+' - '+fmtTime(dE)+' '+timezoneName(dS);
   return new Ember.Handlebars.SafeString('<div class="event_time"><h4>event_time</h4>'+time+'</div>');
 });
 
@@ -68,10 +68,9 @@ function dayOfWeek(date) {
 }
 
 function fmtTime(date) {
-  var h, m, tz, M = null;
+  var h, m, M = null;
   h = date.getHours();
   m = date.getMinutes();
-  tz = date.getTimezoneOffset();
   M = 'AM'
 
   if (m.length = 1) {
@@ -81,28 +80,32 @@ function fmtTime(date) {
     h = h-12;
     M = 'PM';
   }
+
+  return h+':'+m+M;
+}
+
+function timezoneName(date) {
+  tz = date.getTimezoneOffset();
   switch (tz/60) {
     case 5:
-      tz = 'Eastern';
+      return 'Eastern';
       break;
     case 6:
-      tz = 'Central';
+      return 'Central';
       break;
     case 7:
-      tz = 'Mountain';
+      return 'Mountain';
       break;
     case 8:
-      tz = 'Pacific';
+      return 'Pacific';
       break;
     case 9:
-      tz = 'Alaska';
+      return 'Alaska';
       break;
     case 10:
-      tz = 'Hawaii';
+      return 'Hawaii';
       break;
   }
-
-  return h+':'+m+M+' '+tz;
 }
 
 /***
