@@ -21,39 +21,37 @@
 </script>
 <script type="text/x-handlebars" data-template-name="dialog">
   <form id="assister-scheduler" data-partner="">
-    <fieldset class="step-1 location-select-view current">
-      <div class="intro-text">
-        <img class="logo" src="img/logo.png" height="138" width="138">
-        <h3 class="subheading-lg">{{title}}</h3>
-        <p>{{user_prompt}}</p>
+    <div class="intro-text">
+      <img class="logo" src="img/logo.png" height="138" width="138">
+      <h3 class="subheading-lg">{{title}}</h3>
+      <p>{{user_prompt}}</p>
+    </div>
+    <fieldset class="row">
+      <div class="col-sm-4 form-group">
+        <label for="near">Enter Your ZIP Code:</label>
+        {{input class="form-control" type="text" id="near" type="zip" value=userInput.near placeholder="Enter Your ZIP Code"}}
       </div>
-      <ul class="fields">
-        <li class="one-third">
-          <label>Enter Your ZIP Code:</label>
-          {{input type="text" id="near" type="zip" value=userInput.near placeholder="Enter Your ZIP Code"}}
-        </li>
-        <li class="one-third">
-          <label>Search Within:</label>
-          <select name="radius">
-            <option value="5">5 miles</option>
-            <option value="10" selected>10 miles</option>
-            <option value="25">25 miles</option>
-            <option value="50">50 miles</option>
-            <option value="100">100 miles</option>
-          </select>
-        </li>
-        <li class="one-third language">
-          <label>Language:</label><br>
-          {{view "select" content=language_select optionValuePath="content.id" optionLabelPath="content.label" value=userInput.language id="language_select"}}
-        </li>
-      </ul>
-      <div id="no-results-location"></div>
+      <div class="col-sm-4 form-group">
+        <label for="radius">Search Within:</label>
+        <select class="form-control" name="radius" id="radius">
+          <option value="5">5 miles</option>
+          <option value="10" selected>10 miles</option>
+          <option value="25">25 miles</option>
+          <option value="50">50 miles</option>
+          <option value="100">100 miles</option>
+        </select>
+      </div>
+      <div class="col-sm-4 form-group">
+        <label for="language">Language:</label>
+        {{view "select" content=language_select optionValuePath="content.id" optionLabelPath="content.label"
+          value=userInput.language id="language_select" class="form-control"}}
+      </div>
       <div id="location-search-btn-wrapper">
-        {{#link-to 'dialog.locator'class="btn" id="location-search-btn"}}Search For Help{{/link-to}}
-        {{!-- <button {{action 'search'}} id="location-search-btn">Search for Help</button> --}}
+        {{#link-to 'dialog.locator' class="btn btn-lg btn-primary" role="button" id="location-search-btn"}}Search For Help{{/link-to}}
       </div>
-      <div id="location-results-container" class="results-container">{{outlet}}</div>
     </fieldset>
+    <div id="no-results-location"></div>
+    <div id="location-results-container" class="results-container">{{outlet}}</div>
 
     <input type="hidden" name="postal_code">
     <input type="hidden" name="source" id="source">
@@ -170,10 +168,7 @@
   <!-- CLIENT-SPECIFIC WRAPPER FOR CONNECTOR WIDGET -->
   <div id="connector-wrapper" style="height: 385px; margin: auto; width: 1021px; background-color: #ffffff; position: absolute; z-index: 99; left: 15; top: 15;">
     <!--CONNECTOR API WIDGET-->
-    <div id="connector-api" class="container main">
-      <div class="row">
-      </div> <!-- .row -->
-    </div> <!-- .container -->
+    <div id="connector-api" class="container-fluid"></div>
     <!--/END CONNECTOR API WIDGET-->
   </div>
 

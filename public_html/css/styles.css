@@ -18,36 +18,6 @@
   text-transform: uppercase;
 }
 
-/* Not crazy about this markup; a list isn't really semantically appropriate for a form.
- * If the markup is rewritten, these styles can go.
- */
-#connector-wrapper ul.fields {
-  clear: both;
-  list-style: none;
-}
-
-#connector-wrapper ul.fields li.one-third {
-  display: inline-block;
-  width: 33%;
-}
-
-#connector-wrapper ul.fields li.one-third input,
-#connector-wrapper ul.fields li.one-third select {
-  display: block;
-}
 #connector-wrapper #location-search-btn-wrapper {
   text-align: center;
 }
-
-#connector-wrapper #location-search-btn {
-  background: #044060;
-  border-radius: 10px;
-  color: #FFFFFF;
-  font-size: 1.25em;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 15px;
-  padding: 15px;
-  text-decoration: none;
-}
-/* end styles for list markup */
