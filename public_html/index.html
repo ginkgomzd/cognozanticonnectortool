@@ -33,13 +33,7 @@
       </div>
       <div class="col-sm-4 form-group">
         <label for="radius">Search Within:</label>
-        <select class="form-control" name="radius" id="radius">
-          <option value="5">5 miles</option>
-          <option value="10" selected>10 miles</option>
-          <option value="25">25 miles</option>
-          <option value="50">50 miles</option>
-          <option value="100">100 miles</option>
-        </select>
+        {{view "select" content=radius_select value=userInput.radius class="form-control"}}
       </div>
       <div class="col-sm-4 form-group">
         <label for="language">Language:</label>

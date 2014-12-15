@@ -34,6 +34,9 @@ var DialogControllerBase = {
       {id: "lin", label: 'Lingala'},
       {id: "san", label: 'Sango'},
   ],
+  radius_select: [
+    5, 10, 25, 50, 100
+  ],
 }
 
 Connector.DialogController = Ember.ObjectController.extend(DialogControllerBase);

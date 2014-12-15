@@ -5,7 +5,7 @@ var DialogBase = {
   },
   userInput: {
     near: 33629,
-    radius: 100,
+    radius: 25,
     language: ''
   }
 };
