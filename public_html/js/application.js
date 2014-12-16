@@ -119,6 +119,20 @@ Ember.Handlebars.helper('accommodations', function(accommodations) {
   return new Ember.Handlebars.SafeString('<div class="accommodations><h4 class="accommodations">Accommodations</h4>'+innerHTML+'</div>');
 });
 
+Ember.Handlebars.helper('location_address_block', function(assister) {
+  var output = '<strong>' + assister.name + '</strong><br />';
+  output +=  assister.street_address + '<br />';
+
+  if (assister.hasOwnProperty('extended_address') && assister.extended_address.length > 0) {
+    output += assister.extended_address + '<br />';
+  }
+
+  output += assister.locality + ', ' + assister.region + ' ' + assister.postal_code + '<br />';
+  output += assister.formatted_phone + '<br />';
+
+  return new Ember.Handlebars.SafeString(output);
+});
+
 /***
  * Keep for reference:
  */

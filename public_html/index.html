@@ -59,10 +59,7 @@
       {{#each result in model.results}}
         <tr>
           <td>
-            <strong>{{result.name}}</strong><br />
-            {{result.street_address}}{{result.extended_address}}<br />
-            {{result.locality}}, {{result.region}} {{result.postal_code}}<br />
-            {{result.formatted_phone}}<br />
+            {{location_address_block result}}
             {{maplink result}}
           </td>
           <td>
@@ -80,14 +77,9 @@
   <!-- selected-location-template -->
   <p>DEBUG: location.id [{{location.id}}]
   <div class="selected-location">
-  <h3> Selected Location</h3>
-    <!-- to-do: reuse similar code from dialog/locator -->
-    <p class="bold">{{location.name}}</p>
-    <p>{{location.street_address}}</p>
-    <p>{{location.extended_address}}</p>
-    <p>{{location.locality}}, {{location.region}} {{location.postal_code}}</p>
-    <p>{{location.formatted_phone}}</p>
-    <p>{{maplink location}}</p>
+    <h3> Selected Location</h3>
+    {{location_address_block location}}
+    {{maplink location}}
   </div>
   <!-- selected-location-template -->
 
