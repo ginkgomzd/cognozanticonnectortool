@@ -67,6 +67,7 @@ var ScheduleRouteBase = {
     console.log('ScheduleRouteBase');
     var schedule = new Connector.Schedule();
     schedule.appointment = this.controllerFor('availableAppointments').get('appointment');
+    schedule.location = this.controllerFor('dialogLocator').get('location');
     console.dir(schedule);
     return schedule;
   }

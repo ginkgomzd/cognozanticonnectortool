@@ -10,7 +10,8 @@ var ScheduleBase = {
     phone: '',
     optInEmail: true
   },
-  appointment: {}
+  appointment: {},
+  location: {}
 }
 
 Connector.Schedule = Ember.Object.extend(ScheduleBase);
