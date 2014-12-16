@@ -6,6 +6,7 @@ Connector.Router.map(function() {
   this.resource('available', {path: 'available'}, function() {
     this.route('appointments');
   });
+  this.resource('schedule');
 });
 
 var DialogRouteBase = {
@@ -38,7 +39,6 @@ var AvailableRouteBase = {
     var available = new Connector.Available();
     available.location = this.controllerFor('dialogLocator').get('location');
     available.language = this.controllerFor('dialog').get('userInput').language;
-    console.dir(this.controllerFor('dialog').get('userInput'));
     return available;
   }
 };
@@ -62,3 +62,12 @@ var AvailableAppointmentsRouteBase = {
 };
 Connector.AvailableAppointmentsRoute = Ember.Route.extend(AvailableAppointmentsRouteBase);
 
+var ScheduleRouteBase = {
+  model: function() {
+    console.log('ScheduleRouteBase');
+    var schedule = new Connector.Schedule();
+    schedule.appointment = this.controllerFor('availabelAppointments').get('appointment');
+    console.dir(schedule);
+    return schedule;
+  }
+}

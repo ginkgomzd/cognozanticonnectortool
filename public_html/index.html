@@ -12,6 +12,8 @@
 <script src="js/dialogLocatorController.js" type="text/javascript"></script>
 <script src="js/availableController.js" type="text/javascript"></script>
 <script src="js/availableModel.js" type="text/javascript"></script>
+<script src="js/availableAppointmentsController.js" type="text/javascript"></script>
+<script src="js/scheduleModel.js" type="text/javascript"></script>
 <!--/END CONNECTOR API Widget Scripts-->
 
 <!-- Connector Widget Templates -->
@@ -134,11 +136,26 @@
         {{maplink result.location}}
       </div> --}}
       {{accommodations result.accommodations}}
-      <button class="select_appointment">Select</button>
+      <button {{action 'gotoSchedule' result}} class="select_appointment">Select</button>
     </div></li>
   {{/each}}
   </ul>
   <a id="locator-next" href="">Next:{{model.next}}</a>
+</script>
+<script type="text/x-handlebars" data-template-name="schedule">
+<div class="intro-text">
+                <div class="appointment-preconfirm">
+                    <div class="timeInfo">
+                        <p class="bold">{{start_day_formatted}}</p>
+                        <p class="bold">{{start_date_formatted}}</p>
+                        <p class="time">{{time_formatted}}</p>
+                        <p class="timezone">{{timezone_display}}</p>
+                        <p class="duration">{{duration}} min</p>
+
+                    </div>
+                </div>
+
+            </div>
 </script>
 <!-- End Connector Widget Templates -->
 
