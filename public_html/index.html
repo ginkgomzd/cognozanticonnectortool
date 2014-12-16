@@ -108,39 +108,40 @@
   <div id="appointments-results-container" class="results-container">{{outlet}}</div>
 </script>
 <script type="text/x-handlebars" data-template-name="available/appointments">
-  <ul id="appointments-result">
-  {{#each result in model.results}}
-    <li>
-    <div class="debug" style="border: 3px; border-color: red; border-style: solid;">
-    <h4>DEBUG:</h4>
-      id: [{{result.id}}]<br />
-      event_id: [{{result.event_id}}]<br />
-    </div>
-      <div class="appointment">
-        {{event_time result.local_start_time result.local_end_time}}
-      </div>
-    {{#if result.asssiter}}
-      <div class="assister">
-        <h4>Assister:</h4>
-        {{result.assister.last_name}}, {{result.assister.first_name}}<br />
-        {{result.assister.title}}<br />
-        {{result.assister.description}}
-      </div>
-    {{/if}}
-        {{!-- this seems redundant since all appointments are for the same location:
-      <div class="location">
-        <strong>{{result.location.name}}</strong><br />
-        {{result.location.street_address}}<br />
-        {{result.location.locality}}, {{result.occurrence.location.region}} {{result.occurrence.location.postal_code}}<br />
-        {{result.location.phone}}<br />
-        {{maplink result.location}}
-      </div> --}}
-      {{accommodations result.accommodations}}
-      <button {{action 'gotoSchedule' result}} class="select_appointment">Select</button>
-    </div></li>
-  {{/each}}
-  </ul>
-  <a id="locator-next" href="">Next:{{model.next}}</a>
+  <table class="table table-striped">
+    <thead>
+      <th>Debug</th>
+      <th class="sr-only">Accommodations</th>
+      <th>Time</th>
+      <th>Location</th>
+      <th class="sr-only">Select</th>
+    </thead>
+    <tbody>
+      {{#each result in model.results}}
+        <tr>
+          <td style="border: 3px; border-color: red; border-style: solid;">
+            id: [{{result.id}}]<br />
+            event_id: [{{result.event_id}}]<br />
+          </td>
+          <td>
+            {{accommodations result.accommodations}}
+          </td>
+          <td>
+            {{event_time result.local_start_time result.local_end_time}}
+          </td>
+          <td>
+            {{appt_event_title result}}
+            {{location_address_block result.location}}
+            {{maplink result.location}}
+          </td>
+          <td>
+            <button {{action 'gotoSchedule' result}} class="btn btn-primary btn-lg" role="button">Select</button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <a id="locator-next" href="">TODO: Implement pagination</a>
 </script>
 <script type="text/x-handlebars" data-template-name="schedule">
   <div class="intro-text">

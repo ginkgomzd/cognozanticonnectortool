@@ -39,3 +39,11 @@
 #connector-api .results-container td {
   vertical-align: middle;
 }
+
+#connector-api .event_time span {
+  display: block;
+}
+
+#connector-api .event_time .event_time-dow {
+  font-weight: bold;
+}

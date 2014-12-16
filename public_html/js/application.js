@@ -31,82 +31,22 @@ function getNextMonthDate() {
 }
 
 Ember.Handlebars.helper('event_time', function(start, end) {
-  if (start == undefined) {
+  if (start === undefined) {
     return console.log('event_time helper: start time not given');
   }
   var dS = new Date(start);
   var dE = new Date(end);
 
-  var time = dayOfWeek(dS)+' '+fmtTime(dS)+' - '+fmtTime(dE)+' '+timezoneName(dS);
-  return new Ember.Handlebars.SafeString('<div class="event_time"><h4>event_time</h4>'+time+'</div>');
+
+  var time = '<span class="event_time-dow">' + dS.toLocaleDateString('en-US', {weekday: 'long'}) + '</span>';
+  time += '<span class="event_time-month_date">' + dS.toLocaleDateString('en-US', {month: 'long', day: 'numeric'}) + '</span>';
+  time += '<span class="event_time-start_time">' + dS.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', timeZoneName: 'short'});
+
+  var diff = (dE - dS); // in milliseconds
+  var minutes = Math.floor((diff/1000)/60); // first convert to seconds, then minutes, then whole minutes
+  time += '<span class="event_time-appt_length">' + minutes + ' min</span>';
+  return new Ember.Handlebars.SafeString('<div class="event_time">' + time + '</div>');
 });
-
-function dayOfWeek(date) {
-  switch(date.getDay()) {
-    case 0:
-      return 'Sunday';
-      break;
-    case 1:
-      return 'Monday';
-      break;
-    case 2:
-      return 'Tuesday';
-      break;
-    case 3:
-      return 'Wednesday';
-      break;
-    case 4:
-      return 'Thursday';
-      break;
-    case 5:
-      return 'Friday';
-      break;
-    case 6:
-      return 'Saturday'
-      break;
-  }
-}
-
-function fmtTime(date) {
-  var h, m, M = null;
-  h = date.getHours();
-  m = date.getMinutes();
-  M = 'AM'
-
-  if (m.length = 1) {
-    m = '0'+m;
-  }
-  if (h > 12) {
-    h = h-12;
-    M = 'PM';
-  }
-
-  return h+':'+m+M;
-}
-
-function timezoneName(date) {
-  tz = date.getTimezoneOffset();
-  switch (tz/60) {
-    case 5:
-      return 'Eastern';
-      break;
-    case 6:
-      return 'Central';
-      break;
-    case 7:
-      return 'Mountain';
-      break;
-    case 8:
-      return 'Pacific';
-      break;
-    case 9:
-      return 'Alaska';
-      break;
-    case 10:
-      return 'Hawaii';
-      break;
-  }
-}
 
 Ember.Handlebars.helper('accommodations', function(accommodations) {
   var innerHTML = '<ul>';
@@ -116,7 +56,7 @@ Ember.Handlebars.helper('accommodations', function(accommodations) {
     });
   }
   innerHTML += '</ul>';
-  return new Ember.Handlebars.SafeString('<div class="accommodations><h4 class="accommodations">Accommodations</h4>'+innerHTML+'</div>');
+  return new Ember.Handlebars.SafeString('<div class="accommodations">' + innerHTML + '</div>');
 });
 
 Ember.Handlebars.helper('location_address_block', function(assister) {
@@ -131,6 +71,17 @@ Ember.Handlebars.helper('location_address_block', function(assister) {
   output += assister.formatted_phone + '<br />';
 
   return new Ember.Handlebars.SafeString(output);
+});
+
+Ember.Handlebars.helper('appt_event_title', function(appt) {
+  if (appt.hasOwnProperty('title')
+    && appt.location.hasOwnProperty('name')
+    && appt.title !== appt.location.name
+  ) {
+    return new Ember.Handlebars.SafeString('<strong>' + appt.title + '</strong><br />');
+  } else {
+    return null;
+  }
 });
 
 /***
