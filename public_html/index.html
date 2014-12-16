@@ -41,7 +41,7 @@
         {{view "select" content=language_select optionValuePath="content.id" optionLabelPath="content.label"
           value=userInput.language id="language_select" class="form-control"}}
       </div>
-      <div id="location-search-btn-wrapper">
+      <div class="btn-wrapper">
         {{#link-to 'dialog.locator' class="btn btn-lg btn-primary" role="button" id="location-search-btn"}}Search For Help{{/link-to}}
       </div>
     </fieldset>
@@ -81,6 +81,7 @@
   <p>DEBUG: location.id [{{location.id}}]
   <div class="selected-location">
   <h3> Selected Location</h3>
+    <!-- to-do: reuse similar code from dialog/locator -->
     <p class="bold">{{location.name}}</p>
     <p>{{location.street_address}}</p>
     <p>{{location.extended_address}}</p>
@@ -90,25 +91,26 @@
   </div>
   <!-- selected-location-template -->
 
-  <ul>
-  <li class="one-third">
-    <label>Type of Application:</label>
-    {{view "select" content=appl_type_select optionValuePath="content.id" optionLabelPath="content.label" value=userInput.event_type class="event_type"}}
-  </li>
-  <li class="one-third dateFrom">
-    <label>Date From:</label>
-    {{input type="date" id="start_time" value=userInput.start_time}}
-  </li>
-  <li class="one-third dateTo">
-    <label>Date To:</label>
-    {{input type="date" id="end_time" value=userInput.end_time}}
-  </li>
-  <li>
-  <p class="error" data-error="start-time" style="display: none;">Please make sure that the end date for your search is after the start date.</p>
-  <div id="no-results"></div>
-    <button id="btn-search-appointments" class="btn" type="submit" {{action 'searchAvailableAppointments'}}>Search Appointments</button>
-  </li>
-  </ul>
+  <form id="appointment-searcher" data-partner="">
+    <fieldset class="row">
+      <div class="col-sm-4 form-group">
+        <label for="event_type">Type of Application:</label>
+        {{view "select" content=appl_type_select optionValuePath="content.id" optionLabelPath="content.label" value=userInput.event_type class="form-control" id="event_type"}}
+      </div>
+      <div class="col-sm-4 form-group">
+        <label for="start_time">Date From:</label>
+        {{input type="date" class="form-control" id="start_time" value=userInput.start_time}}
+      </div>
+      <div class="col-sm-4 form-group">
+        <label for="end_time">Date To:</label>
+        {{input type="date" id="end_time" class="form-control" value=userInput.end_time}}
+      </div>
+      <div class="btn-wrapper">
+        <button id="btn-search-appointments" class="btn btn-lg btn-primary" role="button" type="submit" {{action 'searchAvailableAppointments'}}>Search Appointments</button>
+      </div>
+      </ul>
+    </fieldset>
+  </form>
   <div id="appointments-results-container" class="results-container">{{outlet}}</div>
 </script>
 <script type="text/x-handlebars" data-template-name="available/appointments">
