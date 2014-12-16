@@ -74,3 +74,39 @@ var ScheduleRouteBase = {
 }
 
 Connector.ScheduleRoute = Ember.Route.extend(ScheduleRouteBase);
+
+
+/***
+ *  SAMPLE POST TO CONFIRM APPOINTMENT
+ ***/
+/*
+ email	test@email.com
+email_optin	1
+end_time	2015-01-16T19:40:33+00:00
+event_type	1
+first_name	TEST
+info_optin	1
+language
+last_name	TEST
+location	2054
+near	33629
+occurrence_id	2147060
+organization
+phone	202-867-5309
+postal_code	33629
+radius	10
+sms_optin	1
+source	widget
+start_time	2014-12-16T19:40:33+00:00
+
+ */
+
+/***
+ *  SAMPLE CALENDAR LINKS
+ */
+/*
+<a class="btn" href="/api/appointments-ical/a762fe30627e4947b5780f6e33c39a93?calendar=google">Google</a>
+<a class="btn" href="/api/appointments-ical/a762fe30627e4947b5780f6e33c39a93?calendar=yahoo">Yahoo</a>
+<a class="btn" href="/api/appointments-ical/a762fe30627e4947b5780f6e33c39a93?calendar=outlook">Outlook</a>
+
+*/
