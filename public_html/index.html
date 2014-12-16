@@ -154,6 +154,16 @@
       </div>
     </div>
   </div>
+  <div class="personal-info>
+    <div class="pi-form">
+    {{input type="text" value=userInput.firstName}}
+    {{input type="text" value=userInput.LastName}}
+    {{input type="text" value=userInput.email}}
+    {{input type="text" value=userInput.phone}}
+    {{input type="checkbox" checked=userInput.optInEmail}}
+    {{#link-to 'dialog.locator' class="btn btn-lg btn-primary" role="button" id="schedule-btn"}}Schedule{{/link-to}}
+    </div>
+  </div>
 </script>
 <!-- End Connector Widget Templates -->
 
