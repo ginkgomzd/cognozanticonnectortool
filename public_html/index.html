@@ -146,11 +146,7 @@
   <div class="intro-text">
     <div class="appointment-preconfirm">
       <div class="timeInfo">
-        <p class="bold">{{start_day_formatted}}</p>
-        <p class="bold">{{start_date_formatted}}</p>
-        <p class="time">{{time_formatted}}</p>
-        <p class="timezone">{{timezone_display}}</p>
-        <p class="duration">{{duration}} min</p>
+        {{event_time appointment.local_start_time appointment.local_end_time}}
       </div>
       <div class="location">
         {{location_address_block location}}
