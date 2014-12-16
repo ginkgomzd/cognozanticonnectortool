@@ -66,8 +66,10 @@ var ScheduleRouteBase = {
   model: function() {
     console.log('ScheduleRouteBase');
     var schedule = new Connector.Schedule();
-    schedule.appointment = this.controllerFor('availabelAppointments').get('appointment');
+    schedule.appointment = this.controllerFor('availableAppointments').get('appointment');
     console.dir(schedule);
     return schedule;
   }
 }
+
+Connector.ScheduleRoute = Ember.Route.extend(ScheduleRouteBase);
