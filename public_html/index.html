@@ -144,30 +144,46 @@
   <a id="locator-next" href="">TODO: Implement pagination</a>
 </script>
 <script type="text/x-handlebars" data-template-name="schedule">
-  <div class="intro-text">
-    <div class="appointment-preconfirm">
-      <div class="timeInfo">
-        {{event_time appointment.local_start_time appointment.local_end_time}}
-      </div>
-      <div class="accommodations">
-        {{accommodations appointment.accommodations}}
-      </div>
-      <div class="location">
-        {{location_address_block location}}
-        {{maplink location}}
-      </div>
+  <div class="appointment-preconfirm row">
+    <div class="col-sm-4">
+      {{event_time appointment.local_start_time appointment.local_end_time}}
+    </div>
+    <div class="col-sm-4">
+      {{appt_event_title appointment}}
+      {{location_address_block location}}
+      {{maplink location}}
+    </div>
+    <div class="col-sm-4">
+      {{accommodations appointment.accommodations}}
     </div>
   </div>
-  <div class="personal-info>
-    <div class="pi-form">
-    {{input type="text" value=userInput.firstName}}
-    {{input type="text" value=userInput.LastName}}
-    {{input type="text" value=userInput.email}}
-    {{input type="text" value=userInput.phone}}
-    {{input type="checkbox" checked=userInput.optInEmail}}
-    {{#link-to 'dialog.locator' class="btn btn-lg btn-primary" role="button" id="schedule-btn"}}Schedule{{/link-to}}
-    </div>
-  </div>
+  <form id="appointment-scheduler" data-partner="">
+    <fieldset class="row">
+      <div class="col-sm-6 col-md-3 form-group">
+        <label for="firstName">First Name:</label>
+        {{input type="text" class="form-control" id="firstName" name="firstName" value=userInput.firstName}}
+      </div>
+      <div class="col-sm-6 col-md-3 form-group">
+        <label for="LastName">Last Name:</label>
+        {{input type="text" class="form-control" id="LastName" name="LastName" value=userInput.LastName}}
+      </div>
+      <div class="col-sm-6 col-md-3 form-group">
+        <label for="email">Email Address:</label>
+        {{input type="text" id="email" name="email" class="form-control" value=userInput.email}}
+      </div>
+      <div class="col-sm-6 col-md-3 form-group">
+        <label for="phone">Phone Number:</label>
+        {{input type="tel" id="phone" name="phone" class="form-control" value=userInput.phone}}
+      </div>
+      <div class="col-sm-12 form-group">
+        <label for="optInEmail">Receive email updates from Get Covered America</label>
+        {{input type="checkbox" name="optInEmail" id="optInEmail" checked=userInput.optInEmail}}
+      </div>
+      <div class="col-sm-12 btn-wrapper">
+        {{#link-to 'dialog.locator' class="btn btn-lg btn-primary" role="button" id="schedule-btn"}}Schedule{{/link-to}}
+      </div>
+    </fieldset>
+  </form>
 </script>
 <!-- End Connector Widget Templates -->
 
