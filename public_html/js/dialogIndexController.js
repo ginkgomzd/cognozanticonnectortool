@@ -1,7 +1,7 @@
 
-var DialogLocatorControllerBase = {
+var DialogIndexControllerBase = {
  init: function () {
-   console.log('DialogLocatorController.init');
+   console.log('DialogIndexrController.init');
  },
  /** TODO: make model? **/
  /***
@@ -17,4 +17,4 @@ var DialogLocatorControllerBase = {
  }
 }
 
-Connector.DialogLocatorController = Ember.ObjectController.extend(DialogLocatorControllerBase);
+Connector.DialogIndexController = Ember.ObjectController.extend(DialogIndexControllerBase);
