@@ -1,7 +1,7 @@
 
 var DialogIndexControllerBase = {
  init: function () {
-   console.log('DialogIndexrController.init');
+   console.log('DialogIndexController.init');
  },
  /** TODO: make model? **/
  /***

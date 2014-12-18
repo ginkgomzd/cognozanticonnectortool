@@ -18,9 +18,9 @@ var DialogIndexRouteBase = {
   },
   model: function() {
     if (!this.modelPrereqCheck()) return false;
-    this.controllerFor('dialog.index').set('hasResults', true);
+    var ctrlDialogIndex = this.controllerFor('dialog.index');
     var data = this.controllerFor('dialog').get('userInput');
-    data.page = this.controllerFor('dialog.index').get('currentPage');
+    data.page = ctrlDialogIndex.get('currentPage');
     return Ember.$.ajax({
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/locations',
@@ -28,6 +28,9 @@ var DialogIndexRouteBase = {
       contenType: 'application/json',
       dataType: 'json',
       data: data,
+    }).success(function(result) {
+      ctrlDialogIndex.set('hasResults', true);
+      return result;
     });
   },
   actions: {
@@ -49,7 +52,6 @@ Connector.DialogIndexRoute = Ember.Route.extend(DialogIndexRouteBase);
 Connector.PrevNextComponent = Ember.Component.extend({
   actions: {
     nextAction: function() {
-      console.log('Componenet.nextPage');
       this.sendAction('next');
     },
     previousAction: function() {
@@ -80,10 +82,12 @@ var AvailableIndexRouteBase = {
   },
   model: function() {
     if (!this.modelPrereqCheck()) return false;
+    var ctrlAvailableIndex = this.controllerFor('available.index');
     var data = this.controllerFor('available').get('userInput');
     data.location = this.controllerFor('available').get('location').id;
     data.eventy_type = 1;
     data.available = 1; // only unreserved times
+    data.page = ctrlAvailableIndex.get('currentPage');
     return Ember.$.ajax({
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/occurrences',
@@ -91,7 +95,20 @@ var AvailableIndexRouteBase = {
       contenType: 'application/json',
       dataType: 'json',
       data: data
+    }).success(function(result) {
+      ctrlAvailableIndex.set('hasResults', true);
+      return result;
     });
+  },
+  actions: {
+    nextPage: function() {
+      this.controllerFor('available.index').send('incrementPage');
+      this.refresh();
+    },
+    previousPage: function() {
+      this.controllerFor('available.index').send('decrementPage');
+      this.refresh();
+    }
   }
 };
 Connector.AvailableIndexRoute = Ember.Route.extend(AvailableIndexRouteBase);
