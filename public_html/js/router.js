@@ -13,8 +13,11 @@ var DialogRouteBase = {
 Connector.DialogRoute = Ember.Route.extend(DialogRouteBase);
 
 var DialogIndexRouteBase = {
+  modelPrereqCheck: function() {
+    return (this.controllerFor('dialog').get('userInput') !== undefined );
+  },
   model: function() {
-    if (this.controllerFor('dialog').get('userInput') === undefined ) return false;
+    if (!this.modelPrereqCheck()) return false;
     return Ember.$.ajax({
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/locations',
@@ -49,8 +52,11 @@ var AvailableRouteBase = {
 Connector.AvailableRoute = Ember.Route.extend(AvailableRouteBase);
 
 var AvailableIndexRouteBase = {
+  modelPrereqCheck: function() {
+    return (this.controllerFor('available').get('userInput') !== undefined );
+  },
   model: function() {
-    if (this.controllerFor('available').get('userInput') === undefined ) return false;
+    if (!this.modelPrereqCheck()) return false;
     var data = this.controllerFor('available').get('userInput');
     data.location = this.controllerFor('available').get('location').id;
     data.eventy_type = 1;
