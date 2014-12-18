@@ -182,10 +182,27 @@
         {{input type="checkbox" name="optInEmail" id="optInEmail" checked=userInput.optInEmail}}
       </div>
       <div class="col-sm-12 btn-wrapper">
-        {{#link-to 'dialog.index' class="btn btn-lg btn-primary" role="button" id="schedule-btn"}}Schedule{{/link-to}}
+        {{#link-to 'confirm' class="btn btn-lg btn-primary" role="button" id="schedule-btn"}}Schedule{{/link-to}}
       </div>
     </fieldset>
   </form>
+</script>
+<script type="text/x-handlebars" data-template-name="confirm">
+<h2 class="first">Thank you for signing up for an appointment!</h2>
+            <p>You’re on your way to getting covered! Here’s your appointment info:</p>
+            <div class="intro-text">
+              {{event_time}}
+              {{location_address_block}}
+              {{maplink}}
+            </div>
+            <p><a href="https://www.getcoveredamerica.org/get-covered-101/before-i-sign-up/">Click here for a list of information to bring to your appointment.</a></p>
+            <p>If you need to change or cancel your appointment, please call <span class="bold phone">867-5309</span>.</p>
+            <p class="add-to-calendar">Add to calendar:</p>
+            <p class="btn-cont">
+            {{!-- <a class="btn" href="/api/appointments-ical/{{guid}}?calendar=google">Google</a>
+                <a class="btn" href="/api/appointments-ical/{{guid}}?calendar=yahoo">Yahoo</a>
+                <a class="btn" href="/api/appointments-ical/{{guid}}?calendar=outlook">Outlook</a> --}}
+            </p>
 </script>
 <script type="text/x-handlebars" data-template-name="components/prev-next">
   {{#if show }}
