@@ -10,10 +10,17 @@ var DialogIndexControllerBase = {
   */
  location: {},
  hasResults: false,
+ currentPage: 1,
  actions: {
     scheduleAppointment: function(location) {
       this.location = location;
       this.transitionToRoute('available');
+    },
+    incrementPage: function() {
+      this.set('currentPage', this.get('currentPage')+1);
+    },
+    decrementPage: function() {
+      this.set('currentPage', this.get('currentPage')-1)
     },
  }
 }

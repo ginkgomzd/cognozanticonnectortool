@@ -19,17 +19,27 @@ var DialogIndexRouteBase = {
   model: function() {
     if (!this.modelPrereqCheck()) return false;
     this.controllerFor('dialog.index').set('hasResults', true);
+    var data = this.controllerFor('dialog').get('userInput');
+    data.page = this.controllerFor('dialog.index').get('currentPage');
     return Ember.$.ajax({
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/locations',
       crossDomain: true,
       contenType: 'application/json',
       dataType: 'json',
-      data: this.controllerFor('dialog').get('userInput')
+      data: data,
     });
   },
   actions: {
     searchLocations: function() {
+      this.refresh();
+    },
+    nextPage: function() {
+      this.controllerFor('dialog.index').send('incrementPage');
+      this.refresh();
+    },
+    previousPage: function() {
+      this.controllerFor('dialog.index').send('decrementPage');
       this.refresh();
     }
   }
@@ -40,7 +50,7 @@ var AvailableRouteBase = {
   model: function() {
     console.log('AvailableRoute.model');
     var available = new Connector.Available();
-    available.location = this.controllerFor('dialogIndex').get('location');
+    available.location = this.controllerFor('dialog.index').get('location');
     available.language = this.controllerFor('dialog').get('userInput.language');
     return available;
   },
@@ -79,7 +89,7 @@ var ScheduleRouteBase = {
     console.log('ScheduleRouteBase');
     var schedule = new Connector.Schedule();
     schedule.appointment = this.controllerFor('availableAppointments').get('appointment');
-    schedule.location = this.controllerFor('dialogIndex').get('location');
+    schedule.location = this.controllerFor('dialog').get('location');
     console.dir(schedule);
     return schedule;
   }

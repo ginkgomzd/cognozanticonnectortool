@@ -74,7 +74,8 @@
     </tbody>
   </table>
   {{#if hasResults }}
-    <button id="locator-next" class="btn btn-primary" {{action "nextPage"}}>More Results</button>
+    <button id="locator-next" class="btn btn-primary" {{action "previousPage"}}>Previous Page</button>
+    <button id="locator-next" class="btn btn-primary" {{action "nextPage"}}>Next Page</button>
   {{/if}}
 </script>
 <script type="text/x-handlebars" data-template-name="available">
