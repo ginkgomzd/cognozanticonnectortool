@@ -27,7 +27,6 @@ var DialogIndexRouteBase = {
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/locations',
       crossDomain: true,
-      contentType: 'application/json',
       dataType: 'json',
       data: data,
     }).success(function(result) {
@@ -94,7 +93,6 @@ var AvailableIndexRouteBase = {
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/occurrences',
       crossDomain: true,
-      contentType: 'application/json',
       dataType: 'json',
       data: data
     }).success(function(result) {
@@ -149,7 +147,6 @@ var ConfirmRouteBase = {
       type: 'POST',
       url: 'https://connector.getcoveredamerica.org/api/appointments',
       crossDomain: true,
-      contentType: 'application/json',
       dataType: 'json',
       data: data
     }).success(function(result) {
