@@ -120,13 +120,47 @@ var ScheduleRouteBase = {
     var schedule = new Connector.Schedule();
     schedule.appointment = this.controllerFor('availableIndex').get('appointment');
     schedule.location = this.controllerFor('dialog').get('location');
-    console.dir(schedule);
     return schedule;
   }
 }
 
 Connector.ScheduleRoute = Ember.Route.extend(ScheduleRouteBase);
 
+var ConfirmRouteBase = {
+  getParams: function() {
+    var ctlSchedule = this.controllerFor('schedule');
+    this.data = ctlSchedule.get('userInput');
+    this.data.email_optin = 1;
+    console.dir(ctlSchedule.get('appointment'));
+    this.data.occurrence_id = ctlSchedule.get('appointment').occurrence_id;
+    this.data.sms_optin = 1;
+    console.dir(this.data);
+    return this.data;
+  },
+  modelPrereqCheck: function() {
+    return false;
+  },
+  model: function() {
+    console.log('ConfirmRoute.model');
+    var data = this.getParams();
+    if (!this.modelPrereqCheck()) return false;
+    return Ember.$.ajax({
+      type: 'POST',
+      url: 'https://connector.getcoveredamerica.org/api/appointments',
+      crossDomain: true,
+      contenType: 'application/json',
+      dataType: 'json',
+      data: data
+    }).success(function(result) {
+      console.log('success');
+      console.dir(result);
+      return result;
+    });
+  },
+  data: {}
+}
+
+Connector.ConfirmRoute = Ember.Route.extend(ConfirmRouteBase);
 
 /***
  *  SAMPLE POST TO CONFIRM APPOINTMENT

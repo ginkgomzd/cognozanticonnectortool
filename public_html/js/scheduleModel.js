@@ -4,10 +4,10 @@ var ScheduleBase = {
     console.log('ScheduleModel.init');
   },
   userInput: {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
+    firstName: 'Tester  ',
+    lastName: 'McTesterson',
+    email: 'spam@me.com',
+    phone: '555-867-5309',
     optInEmail: true
   },
   appointment: {},
