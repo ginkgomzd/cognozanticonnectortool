@@ -63,7 +63,9 @@ Ember.Handlebars.helper('location_address_block', function(assister) {
   var output = '<strong>' + assister.name + '</strong><br />';
   output +=  assister.street_address + '<br />';
 
-  if (assister.hasOwnProperty('extended_address') && assister.extended_address.length > 0) {
+  if (assister.hasOwnProperty('extended_address')
+        && assister.extended_address !== null
+        && assister.extended_address.length > 0) {
     output += assister.extended_address + '<br />';
   }
 
