@@ -77,7 +77,6 @@
 </script>
 <script type="text/x-handlebars" data-template-name="available">
   <!-- selected-location-template -->
-  <p>DEBUG: location.id [{{location.id}}]
   {{#link-to 'dialog' class="btn btn-primary"}}Back{{/link-to}}
   <div class="selected-location">
     <h3> Selected Location</h3>
@@ -111,7 +110,6 @@
 <script type="text/x-handlebars" data-template-name="available/index">
   <table class="table table-striped">
     <thead>
-      <th>Debug</th>
       <th class="sr-only">Accommodations</th>
       <th>Time</th>
       <th>Location</th>
@@ -120,10 +118,6 @@
     <tbody>
       {{#each result in model.results}}
         <tr>
-          <td style="border: 3px; border-color: red; border-style: solid;">
-            id: [{{result.id}}]<br />
-            event_id: [{{result.event_id}}]<br />
-          </td>
           <td>
             {{accommodations result.accommodations}}
           </td>
