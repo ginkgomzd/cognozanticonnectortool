@@ -46,6 +46,18 @@ var DialogIndexRouteBase = {
 };
 Connector.DialogIndexRoute = Ember.Route.extend(DialogIndexRouteBase);
 
+Connector.PrevNextComponent = Ember.Component.extend({
+  actions: {
+    nextAction: function() {
+      console.log('Componenet.nextPage');
+      this.sendAction('next');
+    },
+    previousAction: function() {
+      this.sendAction('previous');
+    }
+  }
+});
+
 var AvailableRouteBase = {
   model: function() {
     console.log('AvailableRoute.model');

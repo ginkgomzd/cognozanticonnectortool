@@ -73,10 +73,7 @@
       {{/each}}
     </tbody>
   </table>
-  {{#if hasResults }}
-    <button id="locator-next" class="btn btn-primary" {{action "previousPage"}}>Previous Page</button>
-    <button id="locator-next" class="btn btn-primary" {{action "nextPage"}}>Next Page</button>
-  {{/if}}
+  {{prev-next next="nextPage" previous="previousPage" model=model show=hasResults}}
 </script>
 <script type="text/x-handlebars" data-template-name="available">
   <!-- selected-location-template -->
@@ -187,6 +184,16 @@
       </div>
     </fieldset>
   </form>
+</script>
+<script type="text/x-handlebars" data-template-name="components/prev-next">
+  {{#if show }}
+    {{#if model.previous}}
+      <button id="locator-next" class="btn btn-primary" {{action "previousAction"}}>Previous Page</button>
+    {{/if}}
+    {{#if model.next}}
+      <button id="locator-next" class="btn btn-primary" {{action "nextAction"}}>Next Page</button>
+    {{/if}}
+  {{/if}}
 </script>
 <!-- End Connector Widget Templates -->
 
