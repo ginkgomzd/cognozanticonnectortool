@@ -78,6 +78,7 @@
 <script type="text/x-handlebars" data-template-name="available">
   <!-- selected-location-template -->
   <p>DEBUG: location.id [{{location.id}}]
+  {{#link-to 'dialog' class="btn btn-primary"}}Back{{/link-to}}
   <div class="selected-location">
     <h3> Selected Location</h3>
     {{location_address_block location}}
@@ -144,6 +145,7 @@
   {{prev-next next="nextPage" previous="previousPage" model=model show=hasResults}}
 </script>
 <script type="text/x-handlebars" data-template-name="schedule">
+{{#link-to 'available' class="btn btn-primary"}}Back{{/link-to}}
   <div class="appointment-preconfirm row">
     <div class="col-sm-4">
       {{event_time appointment.local_start_time appointment.local_end_time}}
@@ -180,7 +182,7 @@
         {{input type="checkbox" name="optInEmail" id="optInEmail" checked=userInput.optInEmail}}
       </div>
       <div class="col-sm-12 btn-wrapper">
-        {{#link-to 'dialog.locator' class="btn btn-lg btn-primary" role="button" id="schedule-btn"}}Schedule{{/link-to}}
+        {{#link-to 'dialog.index' class="btn btn-lg btn-primary" role="button" id="schedule-btn"}}Schedule{{/link-to}}
       </div>
     </fieldset>
   </form>

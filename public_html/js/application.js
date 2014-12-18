@@ -60,6 +60,7 @@ Ember.Handlebars.helper('accommodations', function(accommodations) {
 });
 
 Ember.Handlebars.helper('location_address_block', function(assister) {
+  if (assister === undefined) return null;
   var output = '<strong>' + assister.name + '</strong><br />';
   output +=  assister.street_address + '<br />';
 

@@ -117,7 +117,7 @@ var ScheduleRouteBase = {
   model: function() {
     console.log('ScheduleRouteBase');
     var schedule = new Connector.Schedule();
-    schedule.appointment = this.controllerFor('availableAppointments').get('appointment');
+    schedule.appointment = this.controllerFor('availableIndex').get('appointment');
     schedule.location = this.controllerFor('dialog').get('location');
     console.dir(schedule);
     return schedule;
