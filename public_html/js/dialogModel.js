@@ -4,8 +4,8 @@ var DialogBase = {
     console.log('DialogModel.init');
   },
   userInput: {
-    near: 33629,
-    radius: 25,
+    near: 99501,
+    radius: 10,
     language: ''
   }
 };
