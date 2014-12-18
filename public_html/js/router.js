@@ -21,12 +21,13 @@ var DialogIndexRouteBase = {
     if (!this.modelPrereqCheck()) return false;
     var ctrlDialogIndex = this.controllerFor('dialog.index');
     var data = this.controllerFor('dialog').get('userInput');
+    data.partner_id = 32;
     data.page = ctrlDialogIndex.get('currentPage');
     return Ember.$.ajax({
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/locations',
       crossDomain: true,
-      contenType: 'application/json',
+      contentType: 'application/json',
       dataType: 'json',
       data: data,
     }).success(function(result) {
@@ -93,7 +94,7 @@ var AvailableIndexRouteBase = {
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/occurrences',
       crossDomain: true,
-      contenType: 'application/json',
+      contentType: 'application/json',
       dataType: 'json',
       data: data
     }).success(function(result) {
@@ -132,13 +133,13 @@ var ConfirmRouteBase = {
     this.data = ctlSchedule.get('userInput');
     this.data.email_optin = 1;
     console.dir(ctlSchedule.get('appointment'));
-    this.data.occurrence_id = ctlSchedule.get('appointment').occurrence_id;
+    this.data.occurrence_id = ctlSchedule.get('appointment').id;
     this.data.sms_optin = 1;
     console.dir(this.data);
     return this.data;
   },
   modelPrereqCheck: function() {
-    return false;
+    return true;
   },
   model: function() {
     console.log('ConfirmRoute.model');
@@ -148,7 +149,7 @@ var ConfirmRouteBase = {
       type: 'POST',
       url: 'https://connector.getcoveredamerica.org/api/appointments',
       crossDomain: true,
-      contenType: 'application/json',
+      contentType: 'application/json',
       dataType: 'json',
       data: data
     }).success(function(result) {
