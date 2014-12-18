@@ -73,7 +73,9 @@
       {{/each}}
     </tbody>
   </table>
-  <a id="locator-next" href="">TODO: Implement pagination</a>
+  {{#if hasResults }}
+    <a id="locator-next" href="">TODO: Implement pagination</a>
+  {{/if}}
 </script>
 <script type="text/x-handlebars" data-template-name="available">
   <!-- selected-location-template -->

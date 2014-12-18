@@ -18,6 +18,7 @@ var DialogIndexRouteBase = {
   },
   model: function() {
     if (!this.modelPrereqCheck()) return false;
+    this.controllerFor('dialog.index').set('hasResults', true);
     return Ember.$.ajax({
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/locations',

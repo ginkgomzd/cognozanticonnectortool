@@ -9,6 +9,7 @@ var DialogIndexControllerBase = {
   * @type type
   */
  location: {},
+ hasResults: false,
  actions: {
     scheduleAppointment: function(location) {
       this.location = location;
