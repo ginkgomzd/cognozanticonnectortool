@@ -1,10 +1,7 @@
 
 Connector.Router.map(function() {
-  this.resource('dialog', { path:'/' }, function() {
-  });
-  this.resource('available', {path: 'available'}, function() {
-    this.route('appointments');
-  });
+  this.resource('dialog', { path:'/' }, function() {});
+  this.resource('available', {path: 'available'}, function() {});
   this.resource('schedule');
 });
 
@@ -17,8 +14,6 @@ Connector.DialogRoute = Ember.Route.extend(DialogRouteBase);
 
 var DialogIndexRouteBase = {
   model: function() {
-    console.log('DialogIndexRoute.model');
-    console.dir(Connector.userInput);
     if (this.controllerFor('dialog').get('userInput') === undefined ) return false;
     return Ember.$.ajax({
       type: 'GET',
@@ -44,12 +39,18 @@ var AvailableRouteBase = {
     available.location = this.controllerFor('dialogIndex').get('location');
     available.language = this.controllerFor('dialog').get('userInput').language;
     return available;
+  },
+  actions: {
+    searchAppointments: function() {
+      this.refresh();
+    }
   }
 };
 Connector.AvailableRoute = Ember.Route.extend(AvailableRouteBase);
 
-var AvailableAppointmentsRouteBase = {
+var AvailableIndexRouteBase = {
   model: function() {
+    if (this.controllerFor('available').get('userInput') === undefined ) return false;
     var data = this.controllerFor('available').get('userInput');
     data.location = this.controllerFor('available').get('location').id;
     data.eventy_type = 1;
@@ -64,7 +65,7 @@ var AvailableAppointmentsRouteBase = {
     });
   }
 };
-Connector.AvailableAppointmentsRoute = Ember.Route.extend(AvailableAppointmentsRouteBase);
+Connector.AvailableIndexRoute = Ember.Route.extend(AvailableIndexRouteBase);
 
 var ScheduleRouteBase = {
   model: function() {

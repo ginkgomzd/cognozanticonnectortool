@@ -3,11 +3,6 @@ var AvailableControllerBase = {
   init: function () {
     console.log('AvailableController.init');
   },
-  actions: {
-    searchAvailableAppointments: function() {
-      this.transitionToRoute('available.appointments');
-    }
-  },
   appl_type_select: [
     {id: 1, label: 'Individual or Family'},
     {id: 2, label: 'Group (separate applications)'},

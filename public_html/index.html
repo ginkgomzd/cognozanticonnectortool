@@ -100,14 +100,14 @@
         {{input type="date" id="end_time" class="form-control" value=userInput.end_time}}
       </div>
       <div class="btn-wrapper">
-        <button id="btn-search-appointments" class="btn btn-lg btn-primary" role="button" type="submit" {{action 'searchAvailableAppointments'}}>Search Appointments</button>
+        <button id="btn-search-appointments" class="btn btn-lg btn-primary" role="button" type="submit" {{action 'searchAppointments'}}>Search Appointments</button>
       </div>
       </ul>
     </fieldset>
   </form>
   <div id="appointments-results-container" class="results-container">{{outlet}}</div>
 </script>
-<script type="text/x-handlebars" data-template-name="available/appointments">
+<script type="text/x-handlebars" data-template-name="available/index">
   <table class="table table-striped">
     <thead>
       <th>Debug</th>
