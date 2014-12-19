@@ -25,7 +25,7 @@ var DialogIndexRouteBase = {
     data.page = ctrlDialogIndex.get('currentPage');
     return Ember.$.ajax({
       type: 'GET',
-      url: 'https://connector.getcoveredamerica.org/api/locations',
+      url: 'https://connector.getcoveredamerica.org/api/locations/',
       crossDomain: true,
       dataType: 'json',
       data: data,
@@ -91,7 +91,7 @@ var AvailableIndexRouteBase = {
     data.page = ctrlAvailableIndex.get('currentPage');
     return Ember.$.ajax({
       type: 'GET',
-      url: 'https://connector.getcoveredamerica.org/api/occurrences',
+      url: 'https://connector.getcoveredamerica.org/api/occurrences/',
       crossDomain: true,
       dataType: 'json',
       data: data
@@ -143,16 +143,26 @@ var ConfirmRouteBase = {
     console.log('ConfirmRoute.model');
     var data = this.getParams();
     if (!this.modelPrereqCheck()) return false;
+    return this.getToken()
+      .success(function() {
+        return Ember.$.ajax({
+          type: 'POST',
+          url: 'https://connector.getcoveredamerica.org/api/appointments/',
+          crossDomain: true,
+          dataType: 'json',
+          data: data
+        });
+      })
+      .success(function(result) {
+        console.log('success');
+        console.dir(result);
+        return result;
+      }
+    );
+  },
+  getToken: function() {
     return Ember.$.ajax({
-      type: 'POST',
-      url: 'https://connector.getcoveredamerica.org/api/appointments',
-      crossDomain: true,
-      dataType: 'json',
-      data: data
-    }).success(function(result) {
-      console.log('success');
-      console.dir(result);
-      return result;
+      url: 'https://connector.getcoveredamerica.org/api/me/'
     });
   },
   data: {}
