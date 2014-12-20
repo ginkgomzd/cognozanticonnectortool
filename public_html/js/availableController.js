@@ -1,4 +1,20 @@
 
+var AvailableRouteBase = {
+  model: function() {
+    console.log('AvailableRoute.model');
+    var available = new Connector.Available();
+    available.location = this.controllerFor('dialog.index').get('location');
+    available.language = this.controllerFor('dialog').get('userInput.language');
+    return available;
+  },
+  actions: {
+    searchAppointments: function() {
+      this.refresh();
+    }
+  }
+};
+Connector.AvailableRoute = Ember.Route.extend(AvailableRouteBase);
+
 var AvailableControllerBase = {
   init: function () {
     console.log('AvailableController.init');

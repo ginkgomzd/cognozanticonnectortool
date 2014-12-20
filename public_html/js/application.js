@@ -87,6 +87,16 @@ Ember.Handlebars.helper('appt_event_title', function(appt) {
   }
 });
 
+Connector.PrevNextComponent = Ember.Component.extend({
+  actions: {
+    nextAction: function() {
+      this.sendAction('next');
+    },
+    previousAction: function() {
+      this.sendAction('previous');
+    }
+  }
+});
 /***
  * Keep for reference:
  */

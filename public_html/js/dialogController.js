@@ -1,4 +1,11 @@
 
+var DialogRouteBase = {
+  model: function() {
+    return new Connector.Dialog();
+  }
+};
+Connector.DialogRoute = Ember.Route.extend(DialogRouteBase);
+
 var DialogControllerBase = {
   init: function () {
     console.log('DialogController.init');
