@@ -1,14 +1,14 @@
 
-var DialogIndexRouteBase = {
+var LocationIndexRouteBase = {
   modelPrereqCheck: function() {
-    return (this.controllerFor('dialog').get('userInput') !== undefined );
+    return (this.controllerFor('location').get('userInput') !== undefined );
   },
   model: function() {
     if (!this.modelPrereqCheck()) return false;
-    var ctrlDialogIndex = this.controllerFor('dialog.index');
-    var data = this.controllerFor('dialog').get('userInput');
+    var ctrlLocationIndex = this.controllerFor('location.index');
+    var data = this.controllerFor('location').get('userInput');
     data.partner_id = 32;
-    data.page = ctrlDialogIndex.get('currentPage');
+    data.page = ctrlLocationIndex.get('currentPage');
     return Ember.$.ajax({
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/locations/',
@@ -16,7 +16,7 @@ var DialogIndexRouteBase = {
       dataType: 'json',
       data: data,
     }).success(function(result) {
-      ctrlDialogIndex.set('hasResults', true);
+      ctrlLocationIndex.set('hasResults', true);
       return result;
     });
   },
@@ -25,20 +25,20 @@ var DialogIndexRouteBase = {
       this.refresh();
     },
     nextPage: function() {
-      this.controllerFor('dialog.index').send('incrementPage');
+      this.controllerFor('location.index').send('incrementPage');
       this.refresh();
     },
     previousPage: function() {
-      this.controllerFor('dialog.index').send('decrementPage');
+      this.controllerFor('location.index').send('decrementPage');
       this.refresh();
     }
   }
 };
-Connector.DialogIndexRoute = Ember.Route.extend(DialogIndexRouteBase);
+Connector.LocationIndexRoute = Ember.Route.extend(LocationIndexRouteBase);
 
-var DialogIndexControllerBase = {
+var LocationIndexControllerBase = {
  init: function () {
-   console.log('DialogIndexController.init');
+   console.log('LocationIndexController.init');
  },
  /** TODO: make model? **/
  /***
@@ -62,4 +62,4 @@ var DialogIndexControllerBase = {
  }
 }
 
-Connector.DialogIndexController = Ember.ObjectController.extend(DialogIndexControllerBase);
+Connector.LocationIndexController = Ember.ObjectController.extend(LocationIndexControllerBase);

@@ -11,9 +11,9 @@
 <script src="js/availableModel.js" type="text/javascript"></script>
 <script src="js/availableIndexController.js" type="text/javascript"></script>
 <script src="js/confirmController.js" type="text/javascript"></script>
-<script src="js/dialogController.js" type="text/javascript"></script>
-<script src="js/dialogModel.js" type="text/javascript"></script>
-<script src="js/dialogIndexController.js" type="text/javascript"></script>
+<script src="js/locationController.js" type="text/javascript"></script>
+<script src="js/locationModel.js" type="text/javascript"></script>
+<script src="js/locationIndexController.js" type="text/javascript"></script>
 <script src="js/scheduleController.js" type="text/javascript"></script>
 <script src="js/scheduleModel.js" type="text/javascript"></script>
 <!--/END CONNECTOR API Widget Scripts-->
@@ -22,7 +22,7 @@
 <script type="text/x-handlebars" >
   {{outlet}}
 </script>
-<script type="text/x-handlebars" data-template-name="dialog">
+<script type="text/x-handlebars" data-template-name="location">
   <form id="assister-scheduler" data-partner="">
     <header>
       <img class="logo" src="img/logo.png" height="138" width="138">
@@ -57,7 +57,7 @@
     <input type="hidden" name="email_optin" value="1" checked>
   </form>
 </script>
-<script type="text/x-handlebars" data-template-name="dialog/index">
+<script type="text/x-handlebars" data-template-name="location/index">
   <table class="table table-striped">
     <tbody>
       {{#each result in model.results}}
@@ -79,7 +79,7 @@
 </script>
 <script type="text/x-handlebars" data-template-name="available">
   <!-- selected-location-template -->
-  {{#link-to 'dialog' class="btn btn-primary"}}Back{{/link-to}}
+  {{#link-to 'location' class="btn btn-primary"}}Back{{/link-to}}
   <div class="selected-location">
     <h3> Selected Location</h3>
     {{location_address_block location}}

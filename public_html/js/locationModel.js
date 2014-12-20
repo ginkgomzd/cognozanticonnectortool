@@ -1,7 +1,7 @@
 
-var DialogBase = {
+var LocationBase = {
   init: function() {
-    console.log('DialogModel.init');
+    console.log('LocationModel.init');
   },
   userInput: {
 //    near: 99501, //TESTING ALASKA
@@ -12,4 +12,4 @@ var DialogBase = {
   }
 };
 
-Connector.Dialog = Ember.Object.extend(DialogBase);
+Connector.Location = Ember.Object.extend(LocationBase);

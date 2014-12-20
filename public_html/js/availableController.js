@@ -3,8 +3,8 @@ var AvailableRouteBase = {
   model: function() {
     console.log('AvailableRoute.model');
     var available = new Connector.Available();
-    available.location = this.controllerFor('dialog.index').get('location');
-    available.language = this.controllerFor('dialog').get('userInput.language');
+    available.location = this.controllerFor('location.index').get('location');
+    available.language = this.controllerFor('location').get('userInput.language');
     return available;
   },
   actions: {

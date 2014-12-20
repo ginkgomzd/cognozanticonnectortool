@@ -1,14 +1,14 @@
 
-var DialogRouteBase = {
+var LocationRouteBase = {
   model: function() {
-    return new Connector.Dialog();
+    return new Connector.Location();
   }
 };
-Connector.DialogRoute = Ember.Route.extend(DialogRouteBase);
+Connector.LocationRoute = Ember.Route.extend(LocationRouteBase);
 
-var DialogControllerBase = {
+var LocationControllerBase = {
   init: function () {
-    console.log('DialogController.init');
+    console.log('LocationController.init');
   },
   title: 'Find Local Help',
   user_prompt: 'Need help with your health insurance application? Enter your ZIP code below to find appointments with local application assisters.',
@@ -46,4 +46,4 @@ var DialogControllerBase = {
   ],
 }
 
-Connector.DialogController = Ember.ObjectController.extend(DialogControllerBase);
+Connector.LocationController = Ember.ObjectController.extend(LocationControllerBase);
