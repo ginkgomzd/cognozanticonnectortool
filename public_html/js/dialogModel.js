@@ -4,9 +4,10 @@ var DialogBase = {
     console.log('DialogModel.init');
   },
   userInput: {
-    near: 99501, //TESTING ALASKA
+//    near: 99501, //TESTING ALASKA
 //    near: 85012, //testing Phoenix
-    radius: 100,
+    near: 33614, // Testing Tampa
+    radius: 10,
     language: ''
   }
 };
