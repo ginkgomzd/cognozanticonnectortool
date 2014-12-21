@@ -58,24 +58,26 @@
   </form>
 </script>
 <script type="text/x-handlebars" data-template-name="location/index">
-    {{location-list partners=partnerResults.results others=otherResults.results}}
+    {{location-list partners=partnerResults.results others=otherResults.results showPartnerResults=showPartnerResults}}
   {{prev-next next="nextPage" previous="previousPage" model=model show=showResults}}
 </script>
 <script type="text/x-handlebars" data-template-name="components/location-list">
   <table class="table table-striped">
     <tbody>
-    {{#each item in partners}}
-    <tr>
-      <td>
-        {{location_address_block item}}
-        {{maplink item}}
-      </td><td>
-        {{#if item.appointments_available }}
-        <button {{action 'scheduleAppointment' result}} class="btn btn-primary btn-partner btn">Schedule Online</button>
-        {{/if}}
-      </td>
-    </tr>
-    {{/each}}
+    {{#if showPartnerResults}}
+      {{#each item in partners}}
+      <tr>
+        <td>
+          {{location_address_block item}}
+          {{maplink item}}
+        </td><td>
+          {{#if item.appointments_available }}
+          <button {{action 'scheduleAppointment' result}} class="btn btn-primary btn-partner btn">Schedule Online</button>
+          {{/if}}
+        </td>
+      </tr>
+      {{/each}}
+    {{/if}}
     {{#each item in others}}
       <tr>
         <td>

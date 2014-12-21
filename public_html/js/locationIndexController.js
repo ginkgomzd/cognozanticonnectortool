@@ -10,7 +10,9 @@ var LocationIndexRouteBase = {
     var ctrlLocationIndex = this.controllerFor('location.index');
     var params = this.ajaxRequestParams();
     params.data = this.controllerFor('location').get('userInput');
+    delete params.data.partner; //ensure is not set
     params.data.page = ctrlLocationIndex.get('currentPage');
+
     return Ember.$.ajax(params)
     .done(function(result){
       thisRoute.controllerFor('locationIndex').set('otherResults', result);
@@ -18,6 +20,8 @@ var LocationIndexRouteBase = {
 
       //Now get Partner Results
       params.data.partner = 32;
+      params.data.page = 1; // don't allow subsequent pages
+      console.log(params.data);
       return Ember.$.ajax(params)
       .done(function(result) {
         thisRoute.controllerFor('locationIndex').set('partnerResults', result);
@@ -62,13 +66,34 @@ var LocationIndexControllerBase = {
  location: {},
  partnerResults: {},
  otherResults: {},
+ currentPage: 1,
  hasOtherResults: false,
  hasPartnerResults: false,
  showResults: function() {
    return (this.hasOtherResults || this.hasPartnerResults);
- }.property('hasOtherResults', 'hasPartnerResults'),
- currentPage: 1,
- actions: {
+ }.property('hasOtherResults', 'hasPartnerResults')
+ ,
+ showPartnerResults: function() {
+   return (this.currentPage === 1);
+ }.property('currentPage')
+ ,
+ filterLocationResults: function() {
+  var partners = this.partnerResults.results;
+  var others = this.otherResults.results;
+  var filtered =
+    others.filter(function(location){
+      var found = false;
+      partners.forEach(function(partner){
+        if (partner.id === location.id) {
+          found = true;
+        }
+      });
+      if (!found) return location;
+    });
+  this.set('otherResults.results', filtered);
+  }.observes('partnerResults')
+  ,
+  actions: {
     scheduleAppointment: function(location) {
       this.location = location;
       this.transitionToRoute('available');
