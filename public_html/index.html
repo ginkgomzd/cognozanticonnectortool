@@ -58,24 +58,38 @@
   </form>
 </script>
 <script type="text/x-handlebars" data-template-name="location/index">
+    {{location-list partners=partnerResults.results others=otherResults.results}}
+  {{prev-next next="nextPage" previous="previousPage" model=model show=showResults}}
+</script>
+<script type="text/x-handlebars" data-template-name="components/location-list">
   <table class="table table-striped">
     <tbody>
-      {{#each result in model.results}}
-        <tr>
-          <td>
-            {{location_address_block result}}
-            {{maplink result}}
-          </td>
-          <td>
-            {{#if result.appointments_available }}
-              <button {{action 'scheduleAppointment' result}} class="btn btn-primary btn">Schedule Online</button>
-            {{/if}}
-          </td>
-        </tr>
-      {{/each}}
+    {{#each item in partners}}
+    <tr>
+      <td>
+        {{location_address_block item}}
+        {{maplink item}}
+      </td><td>
+        {{#if item.appointments_available }}
+        <button {{action 'scheduleAppointment' result}} class="btn btn-primary btn-partner btn">Schedule Online</button>
+        {{/if}}
+      </td>
+    </tr>
+    {{/each}}
+    {{#each item in others}}
+      <tr>
+        <td>
+          {{location_address_block item}}
+          {{maplink item}}
+        </td><td>
+          {{#if item.appointments_available }}
+          <button {{action 'scheduleAppointment' result}} class="btn btn-primary btn">Schedule Online</button>
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
     </tbody>
   </table>
-  {{prev-next next="nextPage" previous="previousPage" model=model show=hasResults}}
 </script>
 <script type="text/x-handlebars" data-template-name="available">
   <!-- selected-location-template -->
