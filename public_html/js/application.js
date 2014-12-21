@@ -30,6 +30,11 @@ function getNextMonthDate() {
   return date.toISOString().substr(0,10);
 }
 
+function scrollToEl(el) {
+  var coor = Ember.$(el).offset();
+  window.scrollTo(coor.left, coor.top);
+}
+
 Ember.Handlebars.helper('event_time', function(start, end) {
   if (start === undefined) {
     return console.log('event_time helper: start time not given');
@@ -94,6 +99,14 @@ Connector.PrevNextComponent = Ember.Component.extend({
     },
     previousAction: function() {
       this.sendAction('previous');
+    }
+  }
+});
+
+Connector.LocationListComponent = Ember.Component.extend({
+  actions: {
+    btnClick: function() {
+      this.sendAction('btnClick');
     }
   }
 });

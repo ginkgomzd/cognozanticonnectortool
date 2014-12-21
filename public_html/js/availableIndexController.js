@@ -25,6 +25,7 @@ var AvailableIndexRouteBase = {
   actions: {
     nextPage: function() {
       this.controllerFor('available.index').send('incrementPage');
+      
       this.refresh();
     },
     previousPage: function() {

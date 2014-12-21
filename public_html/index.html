@@ -58,7 +58,7 @@
   </form>
 </script>
 <script type="text/x-handlebars" data-template-name="location/index">
-    {{location-list partners=partnerResults.results others=otherResults.results showPartnerResults=showPartnerResults}}
+  {{location-list partners=partnerResults.results others=otherResults.results showPartnerResults=showPartnerResults btnClick="scheduleAppointment"}}
   {{prev-next next="nextPage" previous="previousPage" model=model show=showResults}}
 </script>
 <script type="text/x-handlebars" data-template-name="components/location-list">
@@ -72,7 +72,7 @@
           {{maplink item}}
         </td><td>
           {{#if item.appointments_available }}
-          <button {{action 'scheduleAppointment' result}} class="btn btn-primary btn-partner btn">Schedule Online</button>
+          <button {{action 'btnClick' result}} class="btn btn-primary btn-partner btn">Schedule Online</button>
           {{/if}}
         </td>
       </tr>
@@ -85,7 +85,7 @@
           {{maplink item}}
         </td><td>
           {{#if item.appointments_available }}
-          <button {{action 'scheduleAppointment' result}} class="btn btn-primary btn">Schedule Online</button>
+          <button {{action 'btnClick' result}} class="btn btn-primary btn">Schedule Online</button>
           {{/if}}
         </td>
       </tr>

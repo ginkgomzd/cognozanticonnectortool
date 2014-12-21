@@ -44,10 +44,12 @@ var LocationIndexRouteBase = {
     },
     nextPage: function() {
       this.controllerFor('location.index').send('incrementPage');
+      scrollToEl('#location-results-container');
       this.refresh();
     },
     previousPage: function() {
       this.controllerFor('location.index').send('decrementPage');
+      scrollToEl('#location-results-container');
       this.refresh();
     }
   }
