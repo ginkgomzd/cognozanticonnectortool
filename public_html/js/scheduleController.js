@@ -4,7 +4,7 @@ var ScheduleRouteBase = {
     console.log('ScheduleRouteBase');
     var schedule = new Connector.Schedule();
     schedule.appointment = this.controllerFor('availableIndex').get('appointment');
-    schedule.location = this.controllerFor('location').get('location');
+    schedule.location = this.controllerFor('locationIndex').get('location');
     return schedule;
   }
 }
