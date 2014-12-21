@@ -36,6 +36,10 @@
   background: #044060;
 }
 
+#connector-api .btn-partner {
+  background: #429745;
+}
+
 #connector-api .results-container td {
   vertical-align: middle;
 }
