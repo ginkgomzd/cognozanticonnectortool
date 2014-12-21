@@ -105,8 +105,8 @@ Connector.PrevNextComponent = Ember.Component.extend({
 
 Connector.LocationListComponent = Ember.Component.extend({
   actions: {
-    btnClick: function() {
-      this.sendAction('btnClick');
+    btnClick: function(location) {
+      this.sendAction('btnClick', location);
     }
   }
 });

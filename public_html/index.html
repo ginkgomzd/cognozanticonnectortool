@@ -72,7 +72,7 @@
           {{maplink item}}
         </td><td>
           {{#if item.appointments_available }}
-          <button {{action 'btnClick' result}} class="btn btn-primary btn-partner btn">Schedule Online</button>
+          <button {{action 'btnClick' item}} class="btn btn-primary btn-partner btn">Schedule Online</button>
           {{/if}}
         </td>
       </tr>
@@ -85,7 +85,7 @@
           {{maplink item}}
         </td><td>
           {{#if item.appointments_available }}
-          <button {{action 'btnClick' result}} class="btn btn-primary btn">Schedule Online</button>
+          <button {{action 'btnClick' item}} class="btn btn-primary btn">Schedule Online</button>
           {{/if}}
         </td>
       </tr>
