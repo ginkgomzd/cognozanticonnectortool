@@ -35,6 +35,18 @@ function scrollToEl(el) {
   window.scrollTo(coor.left, coor.top);
 }
 
+Ember.Handlebars.helper('ical', function(cal, guid) {
+  if (guid === undefined) {
+    console.log('ical helper: guid not given');
+    return false;
+  }
+  if (cal === undefined) {
+    cal = 'Google';
+  }
+  return new Ember.Handlebars.SafeString('<a class="btn" href="https://connector.getcoveredamerica.org/api/appointments-ical/'+guid+'?calendar='+cal.toLowerCase()+'">'+cal+'</a>');
+});
+
+
 Ember.Handlebars.helper('event_time', function(start, end) {
   if (start === undefined) {
     return console.log('event_time helper: start time not given');

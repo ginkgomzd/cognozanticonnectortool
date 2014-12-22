@@ -17,22 +17,24 @@ var ConfirmRouteBase = {
     console.log('ConfirmRoute.model');
     var data = this.getParams();
     if (!this.modelPrereqCheck()) return false;
+
+    var thisRoute = this;
+    var ctrlConfirm = this.controllerFor('confirm');
+
     return this.getToken()
-      .success(function() {
+      .success(function(result) {
         return Ember.$.ajax({
           type: 'POST',
           url: 'https://connector.getcoveredamerica.org/api/appointments/',
           crossDomain: true,
           dataType: 'json',
           data: data
-        });
-      })
-      .success(function(result) {
-        console.log('success');
-        console.dir(result);
-        return result;
-      }
-    );
+        }).success(function(result){
+          // TODO: add a check and don't assume that it is confirmed. There is a status property that might be useful (result.status == 1)
+          ctrlConfirm.set('confirmed', true);
+          thisRoute.controllerFor('confirm').set('confirmation', result)
+        })
+      });
   },
   getToken: function() {
     return Ember.$.ajax({
@@ -53,6 +55,8 @@ var ConfirmControllerBase = {
   location: function() {
     return this.get('appointment.location');
   }.property('appointment.location'),
+  confirmed: false,
+  confirmation: {}
 }
 
 Connector.ConfirmController = Ember.ObjectController.extend(ConfirmControllerBase);

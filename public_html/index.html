@@ -208,12 +208,14 @@
               {{maplink location}}
             </div>
             <p><a href="https://www.getcoveredamerica.org/get-covered-101/before-i-sign-up/">Click here for a list of information to bring to your appointment.</a></p>
-            <p>If you need to change or cancel your appointment, please call <span class="bold phone">{{appointment.formatted_phone}}</span>.</p>
+            <p>If you need to change or cancel your appointment, please call <span class="bold phone">{{location.formatted_phone}}</span>.</p>
             <p class="add-to-calendar">Add to calendar:</p>
             <p class="btn-cont">
-            {{!--               <a class="btn" href="/api/appointments-ical/{{guid}}?calendar=google">Google</a>
-              <a class="btn" href="/api/appointments-ical/{{guid}}?calendar=yahoo">Yahoo</a>
-              <a class="btn" href="/api/appointments-ical/{{guid}}?calendar=outlook">Outlook</a> --}}
+            {{#if confirmed}}
+              {{ical 'Google' confirmation.guid}}
+              {{ical 'Yahoo' confirmation.guid}}
+              {{ical 'Outlook' confirmation.guid}}
+            {{/if}}
             </p>
 </script>
 <script type="text/x-handlebars" data-template-name="components/prev-next">
