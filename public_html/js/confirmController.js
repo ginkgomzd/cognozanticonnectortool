@@ -43,6 +43,20 @@ var ConfirmRouteBase = {
 }
 Connector.ConfirmRoute = Ember.Route.extend(ConfirmRouteBase);
 
+var ConfirmControllerBase = {
+  needs: ['schedule'],
+  appointment: function() {
+    var ctrlSchedule = this.get('controllers.schedule');
+    return ctrlSchedule.get('appointment');
+  }.property('controller.schedule.appointment')
+  ,
+  location: function() {
+    return this.get('appointment.location');
+  }.property('appointment.location'),
+}
+
+Connector.ConfirmController = Ember.ObjectController.extend(ConfirmControllerBase);
+
 /***
  *  SAMPLE POST TO CONFIRM APPOINTMENT
  ***/
