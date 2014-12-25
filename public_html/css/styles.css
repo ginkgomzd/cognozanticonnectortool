@@ -29,6 +29,7 @@
 }
 
 #connector-api fieldset .btn-wrapper {
+  clear: both;
   text-align: center;
 }
 
@@ -50,4 +51,8 @@
 
 #connector-api .event_time .event_time-dow {
   font-weight: bold;
+}
+
+label.error {
+  color: #FF0000;
 }
