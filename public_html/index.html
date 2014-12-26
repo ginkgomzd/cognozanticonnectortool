@@ -173,7 +173,7 @@
       {{accommodations appointment.accommodations}}
     </div>
   </div>
-  <form id="appointment-scheduler" data-partner="">
+  <form id="appointment-scheduler" data-partner="" {{action "schedule" on="submit"}}>
     <fieldset class="row">
       <div class="col-sm-6 col-md-3 form-group">
         <label for="firstName">First Name:</label>
@@ -196,7 +196,7 @@
         {{input type="checkbox" name="optInEmail" id="optInEmail" checked=userInput.optInEmail}}
       </div>
       <div class="col-sm-12 btn-wrapper">
-        {{#link-to 'confirm' class="btn btn-lg btn-primary" role="button" id="schedule-btn"}}Schedule{{/link-to}}
+        <button class="btn btn-lg btn-primary" role="button" id="schedule-btn">Schedule</button>
       </div>
     </fieldset>
   </form>
