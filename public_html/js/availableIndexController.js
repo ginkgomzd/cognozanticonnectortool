@@ -36,9 +36,6 @@ var AvailableIndexRouteBase = {
 Connector.AvailableIndexRoute = Ember.Route.extend(AvailableIndexRouteBase);
 
 var AvailableIndexControllerBase = {
-  init: function () {
-    console.log('AvailableIndexController.init');
-  },
   hasResults: false,
   currentPage: 1,
   actions: {

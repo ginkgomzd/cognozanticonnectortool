@@ -7,9 +7,6 @@ var LocationRouteBase = {
 Connector.LocationRoute = Ember.Route.extend(LocationRouteBase);
 
 var LocationControllerBase = {
-  init: function () {
-    console.log('LocationController.init');
-  },
   title: 'Find Local Help',
   user_prompt: 'Need help with your health insurance application? Enter your ZIP code below to find appointments with local application assisters.',
   language_select: [

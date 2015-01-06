@@ -21,7 +21,7 @@ var LocationIndexRouteBase = {
       //Now get Partner Results
       params.data.partner = 32;
       params.data.page = 1; // don't allow subsequent pages
-      console.log(params.data);
+
       return Ember.$.ajax(params)
       .done(function(result) {
         thisRoute.controllerFor('locationIndex').set('partnerResults', result);
@@ -57,9 +57,6 @@ var LocationIndexRouteBase = {
 Connector.LocationIndexRoute = Ember.Route.extend(LocationIndexRouteBase);
 
 var LocationIndexControllerBase = {
- init: function () {
-   console.log('LocationIndexController.init');
- },
  /** TODO: make model? **/
  /***
   * hold onto user selection. set by scheduleAppointment

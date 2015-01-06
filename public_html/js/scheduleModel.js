@@ -1,13 +1,10 @@
 
 var ScheduleBase = {
-  init: function() {
-    console.log('ScheduleModel.init');
-  },
   userInput: {
-    first_name: 'Tester  ',
-    last_name: 'McTesterson',
-    email: 'spam@me.com',
-    phone: '202-867-5309',
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: '',
     optInEmail: true
   },
   appointment: {},

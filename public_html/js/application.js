@@ -5,8 +5,7 @@
  */
 
 window.Connector = Ember.Application.create({
- rootElement: '#connector-api',
- LOG_TRANSITIONS: true
+ rootElement: '#connector-api'
 });
 Connector.Router = Ember.Router.extend({
   location: 'none'

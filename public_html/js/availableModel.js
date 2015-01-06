@@ -1,11 +1,8 @@
 
 var AvailableBase = {
-  init: function() {
-    console.log('AvailableModel.init');
-  },
   userInput: {
-    start_time: getDate(),
-    end_time: getNextMonthDate(),
+    local_start_time: getDate(),
+    local_end_time: getNextMonthDate(),
     language: '',
     event_type: 1,
   },
