@@ -1,8 +1,5 @@
 
 var ScheduleBase = {
-  init: function() {
-    console.log('ScheduleModel.init');
-  },
   userInput: {
     first_name: '',
     last_name: '',

@@ -4,17 +4,16 @@ var ConfirmRouteBase = {
     var ctlSchedule = this.controllerFor('schedule');
     this.data = ctlSchedule.get('userInput');
     this.data.email_optin = 1;
-    console.dir(ctlSchedule.get('appointment'));
+
     this.data.occurrence_id = ctlSchedule.get('appointment').id;
     this.data.sms_optin = 1;
-    console.dir(this.data);
+
     return this.data;
   },
   modelPrereqCheck: function() {
     return true;
   },
   model: function() {
-    console.log('ConfirmRoute.model');
     var data = this.getParams();
     if (!this.modelPrereqCheck()) return false;
 
