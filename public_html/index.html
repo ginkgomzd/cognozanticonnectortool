@@ -1,278 +1,286 @@
- <!DOCTYPE html><html lang="en" dir="ltr"><head><title>Get Covered Connector</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta http-equiv="Content-Location" content="phoenix.html"><meta name="generator" content="Starfield Technologies; Go Daddy Website Builder v7.0.153"><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Fredericka+the+Great|Allura|Amatic+SC|Arizonia|Averia+Sans+Libre|Cabin+Sketch|Francois+One|Jacques+Francois+Shadow|Josefin+Slab|Kaushan+Script|Love+Ya+Like+A+Sister|Merriweather|Offside|Open+Sans|Open+Sans+Condensed|Oswald|Over+the+Rainbow|Pacifico|Romanesco|Sacramento|Seaweed+Script|Special+Elite">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Get Covered Connector</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Location" content="phoenix.html">
+    <meta name="generator" content="Starfield Technologies; Go Daddy Website Builder v7.0.153">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Fredericka+the+Great|Allura|Amatic+SC|Arizonia|Averia+Sans+Libre|Cabin+Sketch|Francois+One|Jacques+Francois+Shadow|Josefin+Slab|Kaushan+Script|Love+Ya+Like+A+Sister|Merriweather|Offside|Open+Sans|Open+Sans+Condensed|Oswald|Over+the+Rainbow|Pacifico|Romanesco|Sacramento|Seaweed+Script|Special+Elite">
 
+    <!-- README - Install Connector Tool Widget HOWTO
 
-<!-- README - Install Connector Tool Widget HOWTO
+    There are three pieces to the widget. Two inside the page head and one in the page body.
+    The scripts could equally be included elsewhere if you are superstitious.
 
-There are three pieces to the widget. Two inside the page head and one in the page body. 
-The scripts could equally be included elsewhere if you are superstitious.
+    Look for the comments that delineate these sections:
+     1) "CONNECTOR WIDGET Scripts"
+     2) "CONNECTOR WIDGET Templates"
 
-Look for the comments that delineate these sections:
- 1) "CONNECTOR WIDGET Scripts"
- 2) "CONNECTOR WIDGET Templates"
-
-To place the widget in your page, put a div where you would like it to appear:
-<div id="connector-api" class="container-fluid"></div>
-
--->
-
-<!--CONNECTOR WIDGET Scripts -->
-<script src="js/libs/jquery-1.11.1.min.js" type="text/javascript"></script>
-<script src="js/libs/jquery.validate/dist/jquery.validate.min.js" type="text/javascript"></script>
-<script src="js/libs/jquery.validate/dist/additional-methods.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="js/libs/handlebars/handlebars-v1.3.0.js" type="text/javascript"></script>
-<script src="js/libs/ember.min.js"></script>
-<script src="js/application.js" type="text/javascript"></script>
-<script src="js/router.js" type="text/javascript"></script>
-<script src="js/availableController.js" type="text/javascript"></script>
-<script src="js/availableModel.js" type="text/javascript"></script>
-<script src="js/availableIndexController.js" type="text/javascript"></script>
-<script src="js/confirmController.js" type="text/javascript"></script>
-<script src="js/locationController.js" type="text/javascript"></script>
-<script src="js/locationModel.js" type="text/javascript"></script>
-<script src="js/locationIndexView.js" type="text/javascript"></script>
-<script src="js/locationIndexController.js" type="text/javascript"></script>
-<script src="js/scheduleController.js" type="text/javascript"></script>
-<script src="js/scheduleModel.js" type="text/javascript"></script>
-<script src="js/scheduleView.js" type="text/javascript"></script>
-<!-- /END CONNECTOR WIDGET Scripts-->
-
-<!-- CONNECTOR WIDGET Templates -->
-<script type="text/x-handlebars" >
-  {{outlet}}
-</script>
-<script type="text/x-handlebars" data-template-name="location">
-  <form id="assister-scheduler" data-partner="" {{action "searchLocations" on="submit"}}>
-    <header>
-      <img class="logo" src="img/logo.png" height="138" width="138">
-      <div class="intro-text">
-        <h3 class="subheading-lg">{{title}}</h3>
-        <p>{{user_prompt}}</p>
-      </div>
-    </header>
-    <fieldset class="row">
-      <div class="col-sm-4 form-group">
-        <label for="near">Enter Your ZIP Code:</label>
-        {{input class="form-control" type="text" id="near" value=userInput.near placeholder="Enter Your ZIP Code" required=true}}
-      </div>
-      <div class="col-sm-4 form-group">
-        <label for="radius">Search Within:</label>
-        {{view "select" content=radius_select value=userInput.radius class="form-control"}}
-      </div>
-      <div class="col-sm-4 form-group">
-        <label for="language">Language:</label>
-        {{view "select" content=language_select optionValuePath="content.id" optionLabelPath="content.label"
-          value=userInput.language id="language_select" class="form-control"}}
-      </div>
-      <div class="btn-wrapper">
-        <button class="btn btn-lg btn-primary" role="button" id="location-search-btn">Search For Help</button>
-      </div>
-    </fieldset>
-    <div id="location-results-container" class="results-container">{{outlet}}</div>
-
-    <input type="hidden" name="postal_code">
-    <input type="hidden" name="source" id="source">
-    <input type="hidden" name="sms_optin" value="1">
-    <input type="hidden" name="email_optin" value="1" checked>
-  </form>
-</script>
-<script type="text/x-handlebars" data-template-name="location/index">
-  {{location-list partners=partnerResults.results others=otherResults.results showPartnerResults=showPartnerResults btnClick="scheduleAppointment"}}
-  {{prev-next next="nextPage" previous="previousPage" model=model show=showResults}}
-</script>
-<script type="text/x-handlebars" data-template-name="components/location-list">
-  <table class="table table-striped">
-    <tbody>
-    {{#if showPartnerResults}}
-      {{#each item in partners}}
-      <tr>
-        <td>
-          {{location_address_block item}}
-          {{maplink item}}
-        </td><td>
-          {{#if item.appointments_available }}
-          <button {{action 'btnClick' item}} class="btn btn-primary btn-partner btn">Schedule Online</button>
-          {{/if}}
-        </td>
-      </tr>
-      {{/each}}
-    {{/if}}
-    {{#each item in others}}
-      <tr>
-        <td>
-          {{location_address_block item}}
-          {{maplink item}}
-        </td><td>
-          {{#if item.appointments_available }}
-          <button {{action 'btnClick' item}} class="btn btn-primary btn">Schedule Online</button>
-          {{/if}}
-        </td>
-      </tr>
-    {{/each}}
-    </tbody>
-  </table>
-</script>
-<script type="text/x-handlebars" data-template-name="available">
-  <!-- selected-location-template -->
-  {{#link-to 'location' class="btn btn-primary"}}Back{{/link-to}}
-  <div class="selected-location">
-    <h3> Selected Location</h3>
-    {{location_address_block location}}
-    {{maplink location}}
-  </div>
-  <!-- selected-location-template -->
-
-  <form id="appointment-searcher" data-partner="">
-    <fieldset class="row">
-      <div class="col-sm-4 form-group">
-        <label for="event_type">Type of Application:</label>
-        {{view "select" content=appl_type_select optionValuePath="content.id" optionLabelPath="content.label" value=userInput.event_type class="form-control" id="event_type"}}
-      </div>
-      <div class="col-sm-4 form-group">
-        <label for="start_time">Date From:</label>
-        {{input type="date" class="form-control" id="start_time" value=userInput.local_start_time}}
-      </div>
-      <div class="col-sm-4 form-group">
-        <label for="end_time">Date To:</label>
-        {{input type="date" id="end_time" class="form-control" value=userInput.local_end_time}}
-      </div>
-      <div class="btn-wrapper">
-        <button id="btn-search-appointments" class="btn btn-lg btn-primary" role="button" type="submit" {{action 'searchAppointments'}}>Search Appointments</button>
-      </div>
-      </ul>
-    </fieldset>
-  </form>
-  <div id="appointments-results-container" class="results-container">{{outlet}}</div>
-</script>
-<script type="text/x-handlebars" data-template-name="available/index">
-  <table class="table table-striped">
-    <thead>
-      <th>Accommodations</th>
-      <th>Time</th>
-      <th>Location</th>
-      <th class="sr-only">Select</th>
-    </thead>
-    <tbody>
-      {{#each result in model.results}}
-        <tr>
-          <td>
-            {{accommodations result.accommodations}}
-          </td>
-          <td>
-            {{event_time result.local_start_time result.local_end_time}}
-          </td>
-          <td>
-            {{appt_event_title result}}
-            {{location_address_block result.location}}
-            {{maplink result.location}}
-          </td>
-          <td>
-            <button {{action 'gotoSchedule' result}} class="btn btn-primary btn-lg" role="button">Select</button>
-          </td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
-  {{prev-next next="nextPage" previous="previousPage" model=model show=hasResults}}
-</script>
-<script type="text/x-handlebars" data-template-name="schedule">
-{{#link-to 'available' class="btn btn-primary"}}Back{{/link-to}}
-  <div class="appointment-preconfirm row">
-    <div class="col-sm-4">
-      {{event_time appointment.local_start_time appointment.local_end_time}}
-    </div>
-    <div class="col-sm-4">
-      {{appt_event_title appointment}}
-      {{location_address_block location}}
-      {{maplink location}}
-    </div>
-    <div class="col-sm-4">
-      {{accommodations appointment.accommodations}}
-    </div>
-  </div>
-  <form id="appointment-scheduler" data-partner="" {{action "schedule" on="submit"}}>
-    <fieldset class="row">
-      <div class="col-sm-6 col-md-3 form-group">
-        <label for="firstName">First Name:</label>
-        {{input type="text" class="form-control" id="firstName" name="firstName" value=userInput.first_name placeholder="First" required=true}}
-      </div>
-      <div class="col-sm-6 col-md-3 form-group">
-        <label for="LastName">Last Name:</label>
-        {{input type="text" class="form-control" id="LastName" name="LastName" value=userInput.last_name placeholder="Last" required=true}}
-      </div>
-      <div class="col-sm-6 col-md-3 form-group">
-        <label for="email">Email Address:</label>
-        {{input type="email" id="email" name="email" class="form-control" value=userInput.email placeholder="user@domain.com" required=true}}
-      </div>
-      <div class="col-sm-6 col-md-3 form-group">
-        <label for="phone">Phone Number:</label>
-        {{input type="tel" id="phone" name="phone" class="form-control" value=userInput.phone placeholder="202-456-1111" required=true}}
-      </div>
-      <div class="col-sm-12 form-group">
-        <label for="optInEmail">Receive email updates from Get Covered America</label>
-        {{input type="checkbox" name="optInEmail" id="optInEmail" checked=userInput.optInEmail}}
-      </div>
-      <div class="col-sm-12 btn-wrapper">
-        <button class="btn btn-lg btn-primary" role="button" id="schedule-btn">Schedule</button>
-      </div>
-    </fieldset>
-  </form>
-</script>
-<script type="text/x-handlebars" data-template-name="confirm">
-<h2 class="first">Thank you for signing up for an appointment!</h2>
-            <p>You’re on your way to getting covered! Here’s your appointment info:</p>
-            <div class="intro-text">
-              {{event_time appointment.start_time appointment.end_time}}
-              {{location_address_block location}}
-              {{maplink location}}
-            </div>
-            <p><a href="https://www.getcoveredamerica.org/get-covered-101/before-i-sign-up/">Click here for a list of information to bring to your appointment.</a></p>
-            <p>If you need to change or cancel your appointment, please call <span class="bold phone">{{location.formatted_phone}}</span>.</p>
-            <p class="add-to-calendar">Add to calendar:</p>
-            <p class="btn-cont">
-            {{#if confirmed}}
-              {{ical 'Google' confirmation.guid}}
-              {{ical 'Yahoo' confirmation.guid}}
-              {{ical 'Outlook' confirmation.guid}}
-            {{/if}}
-            </p>
-</script>
-<script type="text/x-handlebars" data-template-name="components/prev-next">
-  {{#if show }}
-    {{#if model.previous}}
-      <button id="locator-next" class="btn btn-primary" {{action "previousAction"}}>Previous Page</button>
-    {{/if}}
-    {{#if model.next}}
-      <button id="locator-next" class="btn btn-primary" {{action "nextAction"}}>Next Page</button>
-    {{/if}}
-  {{/if}}
-</script>
-<!-- /END CONNECTOR WIDGET Templates -->
-
-<link href="css/styles.css" type="text/css" rel="stylesheet" data-foo="bar" />
-
-</head>
-<body>
-<div class="wsb-canvas body">
-<div class="wsb-canvas-page-container" style="min-height: 100%; position: relative;">
-<div class="wsb-canvas-scrollable" style="background-color: #ffffff; background-image: url(//nebula.wsimg.com/d3d98cc310de13405817ca0cb7b3a9dc?AccessKeyId=531592D248B589D87A56&amp;alloworigin=1); background-position-x: center; background-position-y: top; background-position: center top; background-repeat: repeat-x; position: absolute; width: 100%; height: 100%;"></div>
-<div id="wsb-canvas-template-page" class="wsb-canvas-page page" style="margin: auto; max-width: 1021px; background-color: #ffffff; position: relative;">
-
-<div id="wsb-canvas-template-container" style="position: relative;">
-
-  <!-- CLIENT-SPECIFIC WRAPPER FOR CONNECTOR WIDGET -->
-  <div id="connector-wrapper" style="position: relative">
-    <!--CONNECTOR API WIDGET-->
+    To place the widget in your page, put a div where you would like it to appear:
     <div id="connector-api" class="container-fluid"></div>
-    <!--/END CONNECTOR API WIDGET-->
-  </div>
 
+    -->
 
+    <!--CONNECTOR WIDGET Scripts -->
+    <script src="js/libs/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="js/libs/jquery.validate/dist/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="js/libs/jquery.validate/dist/additional-methods.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="js/libs/handlebars/handlebars-v1.3.0.js" type="text/javascript"></script>
+    <script src="js/libs/ember.min.js"></script>
+    <script src="js/application.js" type="text/javascript"></script>
+    <script src="js/router.js" type="text/javascript"></script>
+    <script src="js/availableController.js" type="text/javascript"></script>
+    <script src="js/availableModel.js" type="text/javascript"></script>
+    <script src="js/availableIndexController.js" type="text/javascript"></script>
+    <script src="js/confirmController.js" type="text/javascript"></script>
+    <script src="js/locationController.js" type="text/javascript"></script>
+    <script src="js/locationModel.js" type="text/javascript"></script>
+    <script src="js/locationIndexView.js" type="text/javascript"></script>
+    <script src="js/locationIndexController.js" type="text/javascript"></script>
+    <script src="js/scheduleController.js" type="text/javascript"></script>
+    <script src="js/scheduleModel.js" type="text/javascript"></script>
+    <script src="js/scheduleView.js" type="text/javascript"></script>
+    <!-- /END CONNECTOR WIDGET Scripts-->
 
-</div>
-</div>
-</div>
-</div>
-</body>
+    <!-- CONNECTOR WIDGET Templates -->
+    <script type="text/x-handlebars" >
+      {{outlet}}
+    </script>
+    <script type="text/x-handlebars" data-template-name="location">
+      <form id="assister-scheduler" data-partner="" {{action "searchLocations" on="submit"}}>
+        <header>
+          <img class="logo" src="img/logo.png" height="138" width="138">
+          <div class="intro-text">
+            <h3 class="subheading-lg">{{title}}</h3>
+            <p>{{user_prompt}}</p>
+          </div>
+        </header>
+        <fieldset class="row">
+          <div class="col-sm-4 form-group">
+            <label for="near">Enter Your ZIP Code:</label>
+            {{input class="form-control" type="text" id="near" value=userInput.near placeholder="Enter Your ZIP Code" required=true}}
+          </div>
+          <div class="col-sm-4 form-group">
+            <label for="radius">Search Within:</label>
+            {{view "select" content=radius_select value=userInput.radius class="form-control"}}
+          </div>
+          <div class="col-sm-4 form-group">
+            <label for="language">Language:</label>
+            {{view "select" content=language_select optionValuePath="content.id" optionLabelPath="content.label"
+              value=userInput.language id="language_select" class="form-control"}}
+          </div>
+          <div class="btn-wrapper">
+            <button class="btn btn-lg btn-primary" role="button" id="location-search-btn">Search For Help</button>
+          </div>
+        </fieldset>
+        <div id="location-results-container" class="results-container">{{outlet}}</div>
+
+        <input type="hidden" name="postal_code">
+        <input type="hidden" name="source" id="source">
+        <input type="hidden" name="sms_optin" value="1">
+        <input type="hidden" name="email_optin" value="1" checked>
+      </form>
+    </script>
+    <script type="text/x-handlebars" data-template-name="location/index">
+      {{location-list partners=partnerResults.results others=otherResults.results
+        showPartnerResults=showPartnerResults btnClick="scheduleAppointment"}}
+      {{prev-next next="nextPage" previous="previousPage" model=model show=showResults}}
+    </script>
+    <script type="text/x-handlebars" data-template-name="components/location-list">
+      <table class="table table-striped">
+        <tbody>
+          {{#if showPartnerResults}}
+            {{#each item in partners}}
+              <tr>
+                <td>
+                  {{location_address_block item}}
+                  {{maplink item}}
+                </td>
+                <td>
+                  {{#if item.appointments_available }}
+                    <button {{action 'btnClick' item}} class="btn btn-primary btn-partner btn">Schedule Online</button>
+                  {{/if}}
+                </td>
+              </tr>
+            {{/each}}
+          {{/if}}
+          {{#each item in others}}
+            <tr>
+              <td>
+                {{location_address_block item}}
+                {{maplink item}}
+              </td>
+              <td>
+                {{#if item.appointments_available }}
+                  <button {{action 'btnClick' item}} class="btn btn-primary btn">Schedule Online</button>
+                {{/if}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </script>
+    <script type="text/x-handlebars" data-template-name="available">
+      <!-- selected-location-template -->
+      {{#link-to 'location' class="btn btn-primary"}}Back{{/link-to}}
+      <div class="selected-location">
+        <h3> Selected Location</h3>
+        {{location_address_block location}}
+        {{maplink location}}
+      </div>
+      <!-- selected-location-template -->
+
+      <form id="appointment-searcher" data-partner="">
+        <fieldset class="row">
+          <div class="col-sm-4 form-group">
+            <label for="event_type">Type of Application:</label>
+            {{view "select" content=appl_type_select optionValuePath="content.id" optionLabelPath="content.label" value=userInput.event_type class="form-control" id="event_type"}}
+          </div>
+          <div class="col-sm-4 form-group">
+            <label for="start_time">Date From:</label>
+            {{input type="date" class="form-control" id="start_time" value=userInput.local_start_time}}
+          </div>
+          <div class="col-sm-4 form-group">
+            <label for="end_time">Date To:</label>
+            {{input type="date" id="end_time" class="form-control" value=userInput.local_end_time}}
+          </div>
+          <div class="btn-wrapper">
+            <button id="btn-search-appointments" class="btn btn-lg btn-primary" role="button" type="submit" {{action 'searchAppointments'}}>Search Appointments</button>
+          </div>
+          </ul>
+        </fieldset>
+      </form>
+      <div id="appointments-results-container" class="results-container">{{outlet}}</div>
+    </script>
+    <script type="text/x-handlebars" data-template-name="available/index">
+      <table class="table table-striped">
+        <thead>
+          <th>Accommodations</th>
+          <th>Time</th>
+          <th>Location</th>
+          <th class="sr-only">Select</th>
+        </thead>
+        <tbody>
+          {{#each result in model.results}}
+            <tr>
+              <td>
+                {{accommodations result.accommodations}}
+              </td>
+              <td>
+                {{event_time result.local_start_time result.local_end_time}}
+              </td>
+              <td>
+                {{appt_event_title result}}
+                {{location_address_block result.location}}
+                {{maplink result.location}}
+              </td>
+              <td>
+                <button {{action 'gotoSchedule' result}} class="btn btn-primary btn-lg" role="button">Select</button>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{prev-next next="nextPage" previous="previousPage" model=model show=hasResults}}
+    </script>
+    <script type="text/x-handlebars" data-template-name="schedule">
+      {{#link-to 'available' class="btn btn-primary"}}Back{{/link-to}}
+      <div class="appointment-preconfirm row">
+        <div class="col-sm-4">
+          {{event_time appointment.local_start_time appointment.local_end_time}}
+        </div>
+        <div class="col-sm-4">
+          {{appt_event_title appointment}}
+          {{location_address_block location}}
+          {{maplink location}}
+        </div>
+        <div class="col-sm-4">
+          {{accommodations appointment.accommodations}}
+        </div>
+      </div>
+      <form id="appointment-scheduler" data-partner="" {{action "schedule" on="submit"}}>
+        <fieldset class="row">
+          <div class="col-sm-6 col-md-3 form-group">
+            <label for="firstName">First Name:</label>
+            {{input type="text" class="form-control" id="firstName" name="firstName" value=userInput.first_name placeholder="First" required=true}}
+          </div>
+          <div class="col-sm-6 col-md-3 form-group">
+            <label for="LastName">Last Name:</label>
+            {{input type="text" class="form-control" id="LastName" name="LastName" value=userInput.last_name placeholder="Last" required=true}}
+          </div>
+          <div class="col-sm-6 col-md-3 form-group">
+            <label for="email">Email Address:</label>
+            {{input type="email" id="email" name="email" class="form-control" value=userInput.email placeholder="user@domain.com" required=true}}
+          </div>
+          <div class="col-sm-6 col-md-3 form-group">
+            <label for="phone">Phone Number:</label>
+            {{input type="tel" id="phone" name="phone" class="form-control" value=userInput.phone placeholder="202-456-1111" required=true}}
+          </div>
+          <div class="col-sm-12 form-group">
+            <label for="optInEmail">Receive email updates from Get Covered America</label>
+            {{input type="checkbox" name="optInEmail" id="optInEmail" checked=userInput.optInEmail}}
+          </div>
+          <div class="col-sm-12 btn-wrapper">
+            <button class="btn btn-lg btn-primary" role="button" id="schedule-btn">Schedule</button>
+          </div>
+        </fieldset>
+      </form>
+    </script>
+    <script type="text/x-handlebars" data-template-name="confirm">
+      <h2 class="first">Thank you for signing up for an appointment!</h2>
+      <p>You’re on your way to getting covered! Here’s your appointment info:</p>
+      <div class="intro-text">
+        {{event_time appointment.start_time appointment.end_time}}
+        {{location_address_block location}}
+        {{maplink location}}
+      </div>
+      <p><a href="https://www.getcoveredamerica.org/get-covered-101/before-i-sign-up/">Click here for a list of information to bring to your appointment.</a></p>
+      <p>If you need to change or cancel your appointment, please call <span class="bold phone">{{location.formatted_phone}}</span>.</p>
+      <p class="add-to-calendar">Add to calendar:</p>
+      <p class="btn-cont">
+        {{#if confirmed}}
+          {{ical 'Google' confirmation.guid}}
+          {{ical 'Yahoo' confirmation.guid}}
+          {{ical 'Outlook' confirmation.guid}}
+        {{/if}}
+      </p>
+    </script>
+    <script type="text/x-handlebars" data-template-name="components/prev-next">
+      {{#if show }}
+        {{#if model.previous}}
+          <button id="locator-next" class="btn btn-primary" {{action "previousAction"}}>Previous Page</button>
+        {{/if}}
+        {{#if model.next}}
+          <button id="locator-next" class="btn btn-primary" {{action "nextAction"}}>Next Page</button>
+        {{/if}}
+      {{/if}}
+    </script>
+    <!-- /END CONNECTOR WIDGET Templates -->
+
+    <link href="css/styles.css" type="text/css" rel="stylesheet" data-foo="bar" />
+  </head>
+  <body>
+    <div class="wsb-canvas body">
+      <div class="wsb-canvas-page-container" style="min-height: 100%; position: relative;">
+        <div class="wsb-canvas-scrollable" style="background-color: #ffffff; background-image: url(//nebula.wsimg.com/d3d98cc310de13405817ca0cb7b3a9dc?AccessKeyId=531592D248B589D87A56&amp;alloworigin=1); background-position-x: center; background-position-y: top; background-position: center top; background-repeat: repeat-x; position: absolute; width: 100%; height: 100%;"></div>
+        <div id="wsb-canvas-template-page" class="wsb-canvas-page page" style="margin: auto; max-width: 1021px; background-color: #ffffff; position: relative;">
+
+          <div id="wsb-canvas-template-container" style="position: relative;">
+
+            <!-- CLIENT-SPECIFIC WRAPPER FOR CONNECTOR WIDGET -->
+            <div id="connector-wrapper" style="position: relative">
+              <!--CONNECTOR API WIDGET-->
+              <div id="connector-api" class="container-fluid"></div>
+              <!--/END CONNECTOR API WIDGET-->
+            </div>
+            <!-- /END CLIENT-SPECIFIC WRAPPER FOR CONNECTOR WIDGET -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
