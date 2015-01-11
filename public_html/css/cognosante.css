@@ -8,6 +8,10 @@ body {
   background-repeat: repeat-x;
 }
 
+div.wsb-canvas.body {
+  margin-bottom: 50px;
+}
+
 #cognosante-header {
   background: url('../img/cognosante-header.png') top left #E5E5E5;
   color: #FFF0F5;
@@ -27,4 +31,43 @@ body {
   font-style: italic;
   font-weight: bold;
   text-align: right;
+}
+
+#cognosante-content {
+  border: 1px solid #E5E5E5;
+  border-radius: 10px;
+  padding-bottom: 200px;
+}
+
+#cognosante-content .copy {
+  background: url('../img/humans.png') no-repeat;
+  background-position: 100% 100%;
+  font-size: 150%;
+  font-weight: bold;
+  padding: 100px 500px 100px 75px;
+}
+
+#cognosante-footer {
+  bottom: 0px;
+  position: absolute;
+  width: 100%;
+}
+
+#cognosante-footer .logos {
+  background: url('../img/bg-footer.png') no-repeat;
+  background-position: 100% 100%;
+  min-height: 200px;
+  position: relative;
+}
+
+#cognosante-footer .logos .cognosante {
+  bottom: 10px;
+  position: absolute;
+  right: 30px;
+}
+
+.legal {
+  color: #808080;
+  margin: 15px 0;
+  text-align: center;
 }
