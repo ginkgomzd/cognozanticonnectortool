@@ -1,0 +1,9 @@
+/*
+ * This file contains styles specific to the "shell" site containing the widget.
+ */
+body {
+  background-color: #ffffff;
+  background-image: url(//nebula.wsimg.com/d3d98cc310de13405817ca0cb7b3a9dc?AccessKeyId=531592D248B589D87A56&amp;alloworigin=1);
+  background-position: center top;
+  background-repeat: repeat-x;
+}
