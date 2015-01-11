@@ -255,17 +255,14 @@ To place the widget in your page, put a div where you would like it to appear:
 </head>
 <body>
 <div class="wsb-canvas body">
-<div class="wsb-canvas-page-container" style=
-"min-height: 100%; padding-top: 55px; position: relative;">
-<div class="wsb-canvas-scrollable" style=
-"background-color: #ffffff; background-image: url(//nebula.wsimg.com/d3d98cc310de13405817ca0cb7b3a9dc?AccessKeyId=531592D248B589D87A56&amp;alloworigin=1); background-position-x: center; background-position-y: top; background-position: center top; background-repeat: repeat-x; position: absolute; width: 100%; height: 100%;">
-</div>
-<div id="wsb-canvas-template-page" class="wsb-canvas-page page" style="height: 685px; margin: auto; width: 1021px; background-color: #ffffff; position: relative;">
+<div class="wsb-canvas-page-container" style="min-height: 100%; position: relative;">
+<div class="wsb-canvas-scrollable" style="background-color: #ffffff; background-image: url(//nebula.wsimg.com/d3d98cc310de13405817ca0cb7b3a9dc?AccessKeyId=531592D248B589D87A56&amp;alloworigin=1); background-position-x: center; background-position-y: top; background-position: center top; background-repeat: repeat-x; position: absolute; width: 100%; height: 100%;"></div>
+<div id="wsb-canvas-template-page" class="wsb-canvas-page page" style="margin: auto; max-width: 1021px; background-color: #ffffff; position: relative;">
 
-<div id="wsb-canvas-template-container" style="position: absolute;">
+<div id="wsb-canvas-template-container" style="position: relative;">
 
   <!-- CLIENT-SPECIFIC WRAPPER FOR CONNECTOR WIDGET -->
-  <div id="connector-wrapper" style="height: 385px; margin: auto; width: 1021px; background-color: #ffffff; position: absolute; z-index: 99; left: 15; top: 15;">
+  <div id="connector-wrapper" style="position: relative">
     <!--CONNECTOR API WIDGET-->
     <div id="connector-api" class="container-fluid"></div>
     <!--/END CONNECTOR API WIDGET-->
