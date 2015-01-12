@@ -1,3 +1,7 @@
+#connector-wrapper {
+  padding: 15px 0;
+}
+
 #connector-api {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
