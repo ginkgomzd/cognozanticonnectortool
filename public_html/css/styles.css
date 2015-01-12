@@ -57,6 +57,6 @@
   font-weight: bold;
 }
 
-label.error {
+#connector-api .error {
   color: #FF0000;
 }
