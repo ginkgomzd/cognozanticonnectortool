@@ -8,7 +8,10 @@ Connector.LocationRoute = Ember.Route.extend(LocationRouteBase);
 
 var LocationControllerBase = {
   title: 'Find Local Help',
-  user_prompt: 'Need help with your health insurance application? Enter your ZIP code below to find appointments with local application assisters.',
+  user_prompt: 'Need help with your health insurance application? Enter your ZIP\n\
+    code below to find appointments with local application assisters. You may be\n\
+    eligible for free or discounted insurance, so book an appointment before the\n\
+    February 15th deadline!',
   language_select: [
       {id: "", label: 'All'},
       {id: "en", label: 'English'},
