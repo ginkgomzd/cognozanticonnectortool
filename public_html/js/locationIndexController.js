@@ -40,6 +40,7 @@ var LocationIndexRouteBase = {
   },
   actions: {
     searchLocations: function() {
+      scrollToEl('#location-results-container');
       this.refresh();
     },
     nextPage: function() {
