@@ -13,6 +13,7 @@ var ScheduleViewBase = {
   },
   didInsertElement: function() {
     this.declareValidation();
+    scrollToEl('#connector-api');
   },
   formId: 'appointment-scheduler'
 };

@@ -29,9 +29,14 @@ function getNextMonthDate() {
   return date.toISOString().substr(0,10);
 }
 
-function scrollToEl(el) {
+function scrollToEl(el, ms) {
+  ms = typeof ms !== 'undefined' ? ms : 1000;
+
   var coor = Ember.$(el).offset();
-  window.scrollTo(coor.left, coor.top);
+
+  Ember.$('html, body').animate({
+    scrollTop: coor.top
+  }, ms);
 }
 
 Ember.Handlebars.helper('ical', function(cal, guid) {
