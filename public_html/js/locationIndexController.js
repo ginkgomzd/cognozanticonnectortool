@@ -40,8 +40,8 @@ var LocationIndexRouteBase = {
   },
   actions: {
     searchLocations: function() {
-      scrollToEl('#location-results-container');
       this.refresh();
+      scrollToEl('#location-results-container');
     },
     nextPage: function() {
       this.controllerFor('location.index').send('incrementPage');
