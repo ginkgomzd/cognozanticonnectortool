@@ -8,6 +8,12 @@ var ScheduleRouteBase = {
   },
   actions: {
     schedule: function() {
+      // conversion tracking code provided by Global Prarie; Conversion Name: Connector Page
+      var ebRand = Math.random() + '';
+      ebRand = ebRand * 1000000;
+      Ember.$.getScript('//bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&ActivityID=583090&rnd=' + ebRand);
+      // end tracking code
+
       this.transitionTo('confirm');
     }
   }
