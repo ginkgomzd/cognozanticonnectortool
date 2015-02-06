@@ -70,37 +70,42 @@ div.wsb-canvas.body {
   text-align: center;
 }
 
-/* hacks for AppsMachines really rigid widget */
-div#am_promo_popup {
+/**
+ * Hacks for AppsMachines really rigid widget. AppsMachines CSS is added dynamically
+ * after this CSS is loaded, so the html element is added to the beginning of each
+ * selector to win on specificity.
+ */
+@media screen and (max-width: 992px) {
+  html div#am_promo_popup {
     font-size: 2em;
     width: 75%;
     height: auto;
     margin: -37.5% 0 0 -37.5%;
-}
+  }
 
-div#am_promo_wrapper img {
+  html div#am_promo_wrapper img {
     min-width:350px;
     height: auto;
-}
+  }
 
-#am_promo_popup header p {
+  html #am_promo_popup header p {
     font-size: 30px;
-}
+  }
 
-#am_promo_popup header {
+  html #am_promo_popup header {
     margin-top: -40px;
     height: auto;
-}
+  }
 
-#am_promo_popup a#am_promo_close {
+  html #am_promo_popup a#am_promo_close {
     position: absolute;
     top: -30px;
     left: auto;
     right: 10px;
-}
+  }
 
-#am_promo_checkbox {
+  html #am_promo_checkbox {
     transform: scale(2,2);
     margin-right: 15px;
-
+  }
 }
