@@ -100,9 +100,12 @@
                   {{location_address_block item}}
                   {{maplink item}}
                 </td>
-                <td>
+                <td class="right">
                   {{#if item.appointments_available }}
+                    <p><strong>Next available appointment: </strong>{{item.next_available}}</p>
                     <button {{action 'btnClick' item}} class="btn btn-primary btn-partner btn">Schedule Online</button>
+                  {{else}}
+                    <p><strong>No available appointments</strong></p>
                   {{/if}}
                 </td>
               </tr>
@@ -114,9 +117,12 @@
                 {{location_address_block item}}
                 {{maplink item}}
               </td>
-              <td>
+              <td class="right">
                 {{#if item.appointments_available }}
+                  <p><strong>Next available appointment: </strong>{{item.next_available}}</p>
                   <button {{action 'btnClick' item}} class="btn btn-primary btn">Schedule Online</button>
+                {{else}}
+                  <p><strong>No available appointments</strong></p>
                 {{/if}}
               </td>
             </tr>
