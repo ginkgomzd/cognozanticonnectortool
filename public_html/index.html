@@ -223,6 +223,9 @@
             <label for="optInEmail">Receive email updates from Get Covered America</label>
             {{input type="checkbox" name="optInEmail" id="optInEmail" checked=userInput.optInEmail}}
           </div>
+          <div class="col-sm-12 btn-wrapper error">
+            <p>{{confirmationError}}</p>
+          </div>
           <div class="col-sm-12 btn-wrapper">
             <button class="btn btn-lg btn-primary" role="button" id="schedule-btn">Schedule</button>
           </div>
