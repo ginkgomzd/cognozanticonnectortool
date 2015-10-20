@@ -3,10 +3,12 @@ var ConfirmRouteBase = {
   getParams: function() {
     var ctlSchedule = this.controllerFor('schedule');
     this.data = ctlSchedule.get('userInput');
-    this.data.email_optin = 1;
+    //this.data.email_optin = 1;
+    this.data.email_optin = true;
 
     this.data.occurrence_id = ctlSchedule.get('appointment').id;
-    this.data.sms_optin = 1;
+    //this.data.sms_optin = 1;
+    this.data.sms_optin = true;
 
     return this.data;
   },
@@ -17,23 +19,33 @@ var ConfirmRouteBase = {
     var data = this.getParams();
     if (!this.modelPrereqCheck()) return false;
 
+    var location = this.controllerFor('location').get('userInput');
+    data.requested_language = location.language || 'en';
+
     var thisRoute = this;
     var ctrlConfirm = this.controllerFor('confirm');
 
-    return this.getToken()
-      .success(function(result) {
-        return Ember.$.ajax({
-          type: 'POST',
-          url: 'https://connector.getcoveredamerica.org/api/appointments/',
-          crossDomain: true,
-          dataType: 'json',
-          data: data
-        }).success(function(result){
-          // TODO: add a check and don't assume that it is confirmed. There is a status property that might be useful (result.status == 1)
-          ctrlConfirm.set('confirmed', true);
-          thisRoute.controllerFor('confirm').set('confirmation', result)
-        })
-      });
+    return new Promise(function(resolve, reject) {
+      thisRoute.getToken()
+        .success(function(result) {
+          return Ember.$.ajax({
+            type: 'POST',
+            url: 'https://connector.getcoveredamerica.org/api/appointments/',
+            crossDomain: true,
+            dataType: 'json',
+            data: data
+          }).success(function(result){
+            // TODO: add a check and don't assume that it is confirmed. There is a status property that might be useful (result.status == 1)
+            ctrlConfirm.set('confirmed', true);
+            thisRoute.controllerFor('confirm').set('confirmation', result);
+            resolve(true);
+          }).error(function(jqXHR, status, error) {
+            thisRoute.controllerFor('schedule').set("confirmationError", jqXHR.responseText);
+            ctrlConfirm.transitionToRoute('schedule');
+            reject();
+          });
+        });
+    });
   },
   getToken: function() {
     return Ember.$.ajax({
