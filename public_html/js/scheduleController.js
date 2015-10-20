@@ -4,6 +4,10 @@ var ScheduleRouteBase = {
     var schedule = new Connector.Schedule();
     schedule.appointment = this.controllerFor('availableIndex').get('appointment');
     schedule.location = this.controllerFor('locationIndex').get('location');
+    var oldController = this.controllerFor('schedule');
+    if (oldController) {
+      schedule.confirmationError = oldController.get("confirmationError");
+    }
     return schedule;
   },
   actions: {
