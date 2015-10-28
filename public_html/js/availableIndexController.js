@@ -11,6 +11,9 @@ var AvailableIndexRouteBase = {
     data.eventy_type = 1;
     data.available = 1; // only unreserved times
     data.page = ctrlAvailableIndex.get('currentPage');
+    data.organization = null;
+    data.start_time = data.local_start_time;
+    data.end_time = data.local_end_time;
     return Ember.$.ajax({
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/occurrences/',
