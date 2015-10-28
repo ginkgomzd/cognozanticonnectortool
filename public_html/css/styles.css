@@ -60,3 +60,7 @@
 #connector-api .error {
   color: #FF0000;
 }
+
+.right {
+  text-align: right;
+}

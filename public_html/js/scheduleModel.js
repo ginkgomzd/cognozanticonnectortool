@@ -8,7 +8,8 @@ var ScheduleBase = {
     optInEmail: true
   },
   appointment: {},
-  location: {}
-}
+  location: {},
+  confirmationError: ''
+};
 
 Connector.Schedule = Ember.Object.extend(ScheduleBase);
