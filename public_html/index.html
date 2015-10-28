@@ -142,11 +142,11 @@
           </div>
           <div class="col-sm-4 form-group">
             <label for="start_time">Date From:</label>
-            {{input type="date" class="form-control" id="start_time" value=userInput.local_start_time}}
+            {{input type="date" class="form-control" id="start_time" value=userInput.start_time}}
           </div>
           <div class="col-sm-4 form-group">
             <label for="end_time">Date To:</label>
-            {{input type="date" id="end_time" class="form-control" value=userInput.local_end_time}}
+            {{input type="date" id="end_time" class="form-control" value=userInput.end_time}}
           </div>
           <div class="btn-wrapper">
             <button id="btn-search-appointments" class="btn btn-lg btn-primary" role="button" type="submit" {{action 'searchAppointments'}}>Search Appointments</button>
