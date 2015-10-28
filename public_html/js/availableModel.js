@@ -1,8 +1,8 @@
 
 var AvailableBase = {
   userInput: {
-    local_start_time: getDate(),
-    local_end_time: getNextMonthDate(),
+    start_time: getDate(),
+    end_time: getNextMonthDate(),
     language: '',
     event_type: 1,
   },
