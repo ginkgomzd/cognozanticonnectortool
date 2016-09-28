@@ -42,7 +42,6 @@ export default Ember.Controller.extend({
       // end tracking code
       if (this.validate()) {
         var params = this.getParams();
-        console.log(params);
         var that = this;
         this.get("connector").scheduleAppointment(params).then(function () {
           that.transitionToRoute('confirm');
