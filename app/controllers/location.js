@@ -133,7 +133,7 @@ export default Ember.Controller.extend({
     return {
       type: 'GET',
       url: 'https://connector.getcoveredamerica.org/api/locations/',
-      crossDomain: false,
+      crossDomain: true,
       dataType: 'json',
     };
   },
