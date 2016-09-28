@@ -20,7 +20,13 @@ var utilsService = Ember.Service.extend({
     var date = new Date();
     date.setMonth(date.getMonth() + 1);
     return date.toISOString().substr(0,10);
+  },
+
+  validatePhone: function(phone){
+    phone = phone.replace( /\s+/g, "" );
+    return  phone.length > 9 && phone.match( /^(\+?1-?)?(\([2-9]([02-9]\d|1[02-9])\)|[2-9]([02-9]\d|1[02-9]))-?[2-9]([02-9]\d|1[02-9])-?\d{4}$/ );
   }
+
 });
 
 export default utilsService;
