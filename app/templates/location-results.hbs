@@ -1,0 +1,41 @@
+<!--location-list partners=partnerResults.results others=otherResults.results showPartnerResults=showPartnerResults btnClick="scheduleAppointment"//-->
+
+<table class="table table-striped">
+  <tbody>
+  {{#if showPartnerResults}}
+    {{#each partnerResults as |item|}}
+      <tr>
+        <td>
+          {{location-address-block item}}
+          {{map-link location=item}}
+        </td>
+        <td class="right">
+          {{#if item.appointments_available }}
+            <p><strong>Next available appointment: </strong>{{item.next_available}}</p>
+            <button {{action 'scheduleAppointment' item}} class="btn btn-primary btn-partner btn">Schedule Online</button>
+          {{else}}
+            <p><strong>No available appointments</strong></p>
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  {{/if}}
+  {{#each otherResults as |item|}}
+    <tr>
+      <td>
+        {{location-address-block item}}
+        {{map-link location=item}}
+      </td>
+      <td class="right">
+        {{#if item.appointments_available }}
+          <p><strong>Next available appointment: </strong>{{item.next_available}}</p>
+          <button {{action 'scheduleAppointment' item}} class="btn btn-primary btn">Schedule Online</button>
+        {{else}}
+          <p><strong>No available appointments</strong></p>
+        {{/if}}
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+{{prev-next nextAction="nextPage" previousAction="previousPage" next=hasNext prev=hasPrev}}

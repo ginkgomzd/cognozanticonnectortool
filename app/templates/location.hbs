@@ -1,0 +1,38 @@
+<form id="assister-scheduler" data-partner="" {{action "searchLocations" on="submit"}}>
+  <header>
+    <img class="logo" src="img/logo.png" height="138" width="138">
+    <div class="intro-text">
+      <h3 class="subheading-lg">Find Local Help</h3>
+      <p>Need help with your health insurance application? Enter your ZIP\n\
+        code below to find appointments with local application assisters. You may be\n\
+        eligible for free or discounted insurance, so book an appointment before the\n\
+        February 15th deadline!</p>
+    </div>
+  </header>
+  <fieldset class="row">
+    <div class="col-sm-4 form-group">
+      <label for="near">Enter Your ZIP Code:</label>
+      {{input class="form-control" type="text" id="near" value=userInput.near placeholder="Enter Your ZIP Code" required=true}}
+    </div>
+    <div class="col-sm-4 form-group">
+      <label for="radius">Search Within:</label>
+      {{select-widget enabled=true options=radiusOptions value=userInput.radius class="form-control"}}
+    </div>
+    <div class="col-sm-4 form-group">
+      <label for="language">Language:</label>
+      {{select-widget options=languageOptions optionValue="id" optionLabel="label"
+      value=userInput.language id="language_select" class="form-control"}}
+    </div>
+    <div class="btn-wrapper">
+      <button class="btn btn-lg btn-primary" role="button" id="location-search-btn">Search For Help</button>
+    </div>
+  </fieldset>
+  <div id="location-results-container" class="results-container">{{outlet}}</div>
+
+  <input type="hidden" name="postal_code">
+  <input type="hidden" name="source" id="source">
+  <input type="hidden" name="sms_optin" value="1">
+  <input type="hidden" name="email_optin" value="1" checked>
+</form>
+
+{{partial "location-results"}}
