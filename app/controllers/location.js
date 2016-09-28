@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   utils: Ember.inject.service('utils'),
+  connector: Ember.inject.service('connector'),
   hasNext: function() { return false;}.property(),
   hasPrev: function() { return false;}.property(),
   location: function() {return {};}.property(),
@@ -71,7 +72,8 @@ export default Ember.Controller.extend({
       this.doSearch();
     },
     scheduleAppointment: function(location) {
-      this.location = location;
+      this.get("connector").set("selectedLocation", location);
+      //console.log(location);
       this.transitionToRoute('available');
     },
     nextPage: function() {
