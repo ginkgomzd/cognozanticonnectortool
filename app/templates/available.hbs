@@ -1,33 +1,33 @@
 {{#if location}}
-{{#link-to 'location' class="btn btn-primary"}}Back{{/link-to}}
-<div class="selected-location">
-  <h3> Selected Location</h3>
-  {{location-address-block location}}
-  {{map-link location=location}}
-</div>
-<!-- selected-location-template -->
+  {{#link-to 'location' class="btn btn-primary"}}Back{{/link-to}}
+  <div class="selected-location">
+    <h3> Selected Location</h3>
+    {{location-address-block location}}
+    {{map-link location=location}}
+  </div>
+  <!-- selected-location-template -->
 
-<form id="appointment-searcher" data-partner="">
-  <fieldset class="row">
-    <div class="col-sm-4 form-group">
-      <label for="event_type">Type of Application:</label>
-      {{select-widget options=applTypeOptions optionValue="id" optionLabel="label" value=userInput.event_type class="form-control"}}
-    </div>
-    <div class="col-sm-4 form-group">
-      <label for="start_time">Date From:</label>
-      {{input type="date" class="form-control" id="start_time" value=userInput.start_time}}
-    </div>
-    <div class="col-sm-4 form-group">
-      <label for="end_time">Date To:</label>
-      {{input type="date" id="end_time" class="form-control" value=userInput.end_time}}
-    </div>
-    <div class="btn-wrapper">
-      <button id="btn-search-appointments" class="btn btn-lg btn-primary" role="button" type="submit" {{action 'searchAppointments'}}>Search Appointments</button>
-    </div>
-  </fieldset>
-</form>
+  <form id="appointment-searcher" data-partner="">
+    <fieldset class="row">
+      <div class="col-sm-4 form-group">
+        <label for="event_type">Type of Application:</label>
+        {{select-widget options=applTypeOptions optionValue="id" optionLabel="label" value=userInput.event_type class="form-control"}}
+      </div>
+      <div class="col-sm-4 form-group">
+        <label for="start_time">Date From:</label>
+        {{input type="date" class="form-control" id="start_time" value=userInput.start_time}}
+      </div>
+      <div class="col-sm-4 form-group">
+        <label for="end_time">Date To:</label>
+        {{input type="date" id="end_time" class="form-control" value=userInput.end_time}}
+      </div>
+      <div class="btn-wrapper">
+        <button id="btn-search-appointments" class="btn btn-lg btn-primary" role="button" type="submit" {{action 'searchAppointments'}}>Search Appointments</button>
+      </div>
+    </fieldset>
+  </form>
 
-{{partial "available-results"}}
+  {{partial "available-results"}}
 {{else}}
   <p>
     We failed to find the location you selected. Please return to the location search page and try again.
