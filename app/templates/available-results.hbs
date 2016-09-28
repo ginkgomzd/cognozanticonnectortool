@@ -1,0 +1,33 @@
+<div id="appointments-results-container" class="results-container">
+  {{#if results}}
+    <table class="table table-striped">
+      <thead>
+      <th>Accommodations</th>
+      <th>Time</th>
+      <th>Location</th>
+      <th class="sr-only">Select</th>
+      </thead>
+      <tbody>
+      {{#each results as |result|}}
+        <tr>
+          <td>
+            {{accommodations-list items=result.accommodations}}
+          </td>
+          <td>
+            {{event-time result.local_start_time result.local_end_time}}
+          </td>
+          <td>
+            {{appt-event-title result}}
+            {{location-address-block result.location}}
+            {{map-link location=result.location}}
+          </td>
+          <td>
+            <button {{action 'gotoSchedule' result}} class="btn btn-primary btn-lg" role="button">Select</button>
+          </td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+    {{prev-next nextAction="nextPage" previousAction="previousPage" next=hasNext prev=hasPrev}}
+  {{/if}}
+</div>
