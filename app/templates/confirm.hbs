@@ -1,0 +1,21 @@
+{{#if confirmation}}
+  <h2 class="first">Thank you for signing up for an appointment!</h2>
+  <p>You’re on your way to getting covered! Here’s your appointment info:</p>
+  <div class="intro-text">
+    {{event-time appointment.start_time appointment.end_time}}
+    {{location-address-block location}}
+    {{map-link location=location}}
+  </div>
+  <p><a href="https://www.getcoveredamerica.org/get-covered-101/before-i-sign-up/">Click here for a list of information to bring to your appointment.</a></p>
+  <p>If you need to change or cancel your appointment, please call <span class="bold phone">{{location.formatted_phone}}</span>.</p>
+  <p class="add-to-calendar">Add to calendar:</p>
+  <p class="btn-cont">
+    {{ical 'Google' confirmation.guid}}
+    {{ical 'Yahoo' confirmation.guid}}
+    {{ical 'Outlook' confirmation.guid}}
+  </p>
+{{else}}
+  <p>I'm sorry, something has gone wrong. Please try again.</p>
+  <p>If you continue to receive this error, please contact a system administrator</p>
+  {{#link-to 'location' class="btn btn-primary"}}Find a Location{{/link-to}}
+{{/if}}

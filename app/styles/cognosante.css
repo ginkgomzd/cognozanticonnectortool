@@ -1,0 +1,111 @@
+/*
+ * This file contains styles specific to the "shell" site containing the widget.
+ */
+body {
+  background-color: #ffffff;
+  background-image: url(//nebula.wsimg.com/d3d98cc310de13405817ca0cb7b3a9dc?AccessKeyId=531592D248B589D87A56&amp;alloworigin=1);
+  background-position: center top;
+  background-repeat: repeat-x;
+}
+
+div.wsb-canvas.body {
+  margin-bottom: 50px;
+}
+
+#cognosante-header {
+  background: url('../img/cognosante-header.png') top left #E5E5E5;
+  color: #FFF0F5;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 240px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  /*
+   * needed to counter collapsing margins (see http://stackoverflow.com/a/20692375);
+   * keeps the header stuck to the top of the viewport
+   */
+  overflow: auto;
+}
+
+#cognosante-header h1 {
+  font-style: italic;
+  font-weight: bold;
+  text-align: right;
+}
+
+#cognosante-content {
+  padding-bottom: 200px;
+}
+
+#cognosante-content .copy {
+  background: url('../img/humans.png') no-repeat;
+  background-position: 100% 100%;
+  font-size: 150%;
+  font-weight: bold;
+  padding: 100px 500px 100px 75px;
+}
+
+#cognosante-footer {
+  bottom: 0px;
+  position: absolute;
+  width: 100%;
+}
+
+#cognosante-footer .logos {
+  background: url('../img/bg-footer.png') no-repeat;
+  background-position: 100% 100%;
+  min-height: 200px;
+  position: relative;
+}
+
+#cognosante-footer .logos .cognosante {
+  bottom: 10px;
+  position: absolute;
+  right: 30px;
+}
+
+.legal {
+  color: #808080;
+  margin: 15px 0;
+  text-align: center;
+}
+
+/**
+ * Hacks for AppsMachines really rigid widget. AppsMachines CSS is added dynamically
+ * after this CSS is loaded, so the html element is added to the beginning of each
+ * selector to win on specificity.
+ */
+@media screen and (max-width: 992px) {
+  html div#am_promo_popup {
+    font-size: 2em;
+    width: 75%;
+    height: auto;
+    margin: -37.5% 0 0 -37.5%;
+  }
+
+  html div#am_promo_wrapper img {
+    min-width:350px;
+    height: auto;
+  }
+
+  html #am_promo_popup header p {
+    font-size: 30px;
+  }
+
+  html #am_promo_popup header {
+    margin-top: -40px;
+    height: auto;
+  }
+
+  html #am_promo_popup a#am_promo_close {
+    position: absolute;
+    top: -30px;
+    left: auto;
+    right: 10px;
+  }
+
+  html #am_promo_checkbox {
+    transform: scale(2,2);
+    margin-right: 15px;
+  }
+}
