@@ -34,5 +34,8 @@ export default Ember.Component.extend({
   },
   watchValue: function() {
     this.$().val(this.get("value"));
-  }.observes("value")
+  }.observes("value"),
+  didInsertElement: function() {
+    this.watchValue();
+  }
 });
