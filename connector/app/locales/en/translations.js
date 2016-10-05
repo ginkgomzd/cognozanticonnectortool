@@ -40,10 +40,28 @@ export default {
     },
     "start-date": "Date From",
     "end-date": "Date To",
+    "first-name": {
+      "label": "First Name",
+      "placeholder": "First",
+    },
+    "last-name": {
+      "label": "Last Name",
+      "placeholder": "Last",
+    },
+    "email": {
+      "label": "Email Address",
+      "placeholder": "user@domain.com",
+    },
+    "phone": {
+      "label": "Phone Number",
+      "placeholder": "202-456-1111",
+    },
+    "opt-in-email": "Receive email updates from Get Covered America",
     "buttons": {
       "search-for-help": "Search For Help",
       "search-appointments": "Search Appointments",
-      "schedule": "Schedule Online",
+      "schedule-online": "Schedule Online",
+      "schedule": "Schedule",
       "find-location": "Find a Location",
       "back": "Back",
       "select": "Select",
@@ -57,6 +75,8 @@ export default {
 
   "errors": {
     "no-location": "We failed to find the location you selected. Please return to the location search page and try again.",
+    "no-appointment": "I'm sorry, we had some trouble loading that appointment time. Please try again.",
+    "continued": "If you continue to receive this error, please contact a system administrator",
     "no-results": "No Results Found",
     "default": "An unknown error occurred"
   },
