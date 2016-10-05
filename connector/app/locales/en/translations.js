@@ -25,7 +25,12 @@ export default {
     "search-radius": "Search Within",
     "language": "Language",
     "application-type": {
-      "label": "Type of Application"
+      "label": "Type of Application",
+      "options": {
+        "individual": "Individual or Family",
+        "group": "Group (separate applications)",
+        "shop": "Small Business (SHOP)",
+      }
     },
     "start-date": "Date From",
     "end-date": "Date To",

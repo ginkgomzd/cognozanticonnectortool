@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   utils: Ember.inject.service('utils'),
   connector: Ember.inject.service('connector'),
+  i18n: Ember.inject.service(),
 
 
   currentPage: function() {return 1;}.property(),
@@ -78,9 +79,9 @@ export default Ember.Controller.extend({
   }.property(),
   applTypeOptions: function() {
     return [
-      {id: 1, label: 'Individual or Family'},
-      {id: 2, label: 'Group (separate applications)'},
-      {id: 3, label: 'Small Business (SHOP)'},
+      {id: 1, label: this.get('i18n').t('form-controls.application-type.options.individual')},
+      {id: 2, label: this.get('i18n').t('form-controls.application-type.options.group')},
+      {id: 3, label: this.get('i18n').t('form-controls.application-type.options.shop')},
     ];
   }.property()
 });
