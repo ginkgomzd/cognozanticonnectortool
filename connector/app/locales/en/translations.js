@@ -43,6 +43,13 @@ export default {
     "cognosante-tag": "Cognosante - Minds on Health",
   },
 
+  "widgets": {
+    "maplink": {
+      "text": "View map",
+      "hover": "Look up address on Google Maps",
+    },
+  },
+
   "misc": {
     "languages": {
       "all": "All",
