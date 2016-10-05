@@ -95,6 +95,10 @@ export default {
       "text": "View map",
       "hover": "Look up address on Google Maps",
     },
+    "prev-next": {
+      "prev": "Previous Page",
+      "next": "Next Page",
+    }
   },
 
   "words": {
