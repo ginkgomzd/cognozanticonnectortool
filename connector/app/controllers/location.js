@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   utils: Ember.inject.service('utils'),
   connector: Ember.inject.service('connector'),
+  i18n: Ember.inject.service(),
   hasNext: function() { return false;}.property(),
   hasPrev: function() { return false;}.property(),
   location: function() {return {};}.property(),
@@ -100,10 +101,10 @@ export default Ember.Controller.extend({
   }.property(),
   languageOptions: function() {
     return [
-      {id: "", label: 'All'},
+      {id: "", label: this.get('i18n').t('misc.languages.all')},
       {id: "en", label: 'English'},
       {id: "es", label: 'Spanish'},
-      {id: "tel", label: 'Phone translation (all languages)'},
+      {id: "tel", label: this.get('i18n').t('misc.languages.phone')},
       {id: "cpe", label: 'Creole'},
       {id: "it", label: 'Italian'},
       {id: "ko", label: 'Korean'},

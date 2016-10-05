@@ -2,29 +2,26 @@
   <header>
     <img class="logo" src="img/logo.png" height="138" width="138">
     <div class="intro-text">
-      <h3 class="subheading-lg">Find Local Help</h3>
-      <p>Need help with your health insurance application? Enter your ZIP
-        code below to find appointments with local application assisters. You may be
-        eligible for free or discounted insurance, so book an appointment before the
-        February 15th deadline!</p>
+      <h3 class="subheading-lg">{{t "location.title"}}</h3>
+      <p>{{t "location.copy"}}</p>
     </div>
   </header>
   <fieldset class="row">
     <div class="col-sm-4 form-group">
-      <label for="near">Enter Your ZIP Code:</label>
-      {{input class="form-control" type="text" id="near" value=userInput.near placeholder="Enter Your ZIP Code" required=true}}
+      <label for="near">{{t "form-controls.zipcode"}}:</label>
+      {{input class="form-control" type="text" id="near" value=userInput.near placeholder=(t "form-controls.zipcode") required=true}}
     </div>
     <div class="col-sm-4 form-group">
-      <label for="radius">Search Within:</label>
+      <label for="radius">{{t "form-controls.search-radius"}}:</label>
       {{select-widget enabled=true options=radiusOptions value=userInput.radius class="form-control"}}
     </div>
     <div class="col-sm-4 form-group">
-      <label for="language">Language:</label>
+      <label for="language">{{t "form-controls.language"}}:</label>
       {{select-widget options=languageOptions optionValue="id" optionLabel="label"
       value=userInput.language id="language_select" class="form-control"}}
     </div>
     <div class="btn-wrapper">
-      <button class="btn btn-lg btn-primary" role="button" id="location-search-btn">Search For Help</button>
+      <button class="btn btn-lg btn-primary" role="button" id="location-search-btn">{{t "form-controls.buttons.search-for-help"}}</button>
     </div>
   </fieldset>
   <div id="location-results-container" class="results-container">{{outlet}}</div>

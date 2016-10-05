@@ -8,7 +8,26 @@ export default {
   // },
   //
   // "key.with.interpolation": "Text with {{anInterpolation}}"
-  
+
+  "location": {
+    "title": "Find Local Help",
+    "copy": "Need help with your health insurance application? Enter your ZIP code below to find appointments with local application assisters. You may be eligible for free or discounted insurance, so book an appointment before the February 15th deadline!"
+  },
+
+  "form-controls": {
+    "zipcode": "Enter Your ZIP Code",
+    "search-radius": "Search Within",
+    "language": "Language",
+    "buttons": {
+      "search-for-help": "Search For Help",
+      "default": "Search"
+    }
+  },
+
+  "errors": {
+    "no-results": "No Results Found",
+    "default": "An unknown error occurred"
+  },
 
   "app": {
     "title": "Schedule an Appointment",
@@ -18,5 +37,11 @@ export default {
     "cognosante-tag": "Cognosante - Minds on Health",
   },
 
+  "misc": {
+    "languages": {
+      "all": "All",
+      "phone": "Phone translation (all languages)",
+    }
+  }
 
 };
