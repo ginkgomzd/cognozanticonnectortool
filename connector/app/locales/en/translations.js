@@ -14,13 +14,26 @@ export default {
     "copy": "Need help with your health insurance application? Enter your ZIP code below to find appointments with local application assisters. You may be eligible for free or discounted insurance, so book an appointment before the February 15th deadline!",
   },
 
+  "available": {
+    "title": "Selected Location",
+    "copy": "",
+  },
+
+
   "form-controls": {
     "zipcode": "Enter Your ZIP Code",
     "search-radius": "Search Within",
     "language": "Language",
+    "application-type": {
+      "label": "Type of Application"
+    },
+    "start-date": "Date From",
+    "end-date": "Date To",
     "buttons": {
       "search-for-help": "Search For Help",
+      "search-appointments": "Search Appointments",
       "schedule": "Schedule Online",
+      "find-location": "Find a Location",
       "back": "Back",
       "default": "Search"
     },
@@ -31,6 +44,7 @@ export default {
   },
 
   "errors": {
+    "no-location": "We failed to find the location you selected. Please return to the location search page and try again.",
     "no-results": "No Results Found",
     "default": "An unknown error occurred"
   },
