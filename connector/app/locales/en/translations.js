@@ -76,11 +76,15 @@ export default {
     },
   },
 
+  "words": {
+    "accommodations": "Accommodations",
+    "time": "Time",
+    "location": "Location",
+    "select": "Select",
+  },
+
   "misc": {
-    "languages": {
-      "all": "All",
-      "phone": "",
-    }
+
   }
 
 };
