@@ -19,6 +19,13 @@ export default {
     "copy": "",
   },
 
+  "confirm": {
+    "thank-you": "Thank you for signing up for an appointment!",
+    "on-your-way": "You’re on your way to getting covered! Here’s your appointment info",
+    "what-to-bring-link": "Click here for a list of information to bring to your appointment.",
+    "change-cancel": "If you need to change or cancel your appointment, please call",
+    "add-to-calendar": "Add to calendar",
+  },
 
   "form-controls": {
     "zipcode": "Enter Your ZIP Code",
@@ -76,6 +83,7 @@ export default {
   "errors": {
     "no-location": "We failed to find the location you selected. Please return to the location search page and try again.",
     "no-appointment": "I'm sorry, we had some trouble loading that appointment time. Please try again.",
+    "no-confirmation": "I'm sorry, something has gone wrong. Please try again.",
     "continued": "If you continue to receive this error, please contact a system administrator",
     "valid-phone": "Please specify a valid phone number",
     "no-results": "No Results Found",
