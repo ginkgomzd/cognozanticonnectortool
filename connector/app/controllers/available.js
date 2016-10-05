@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
     data.organization = null;
     return Ember.$.ajax({
       type: 'GET',
-      url: 'https://connector.getcoveredamerica.org/api/occurrences/',
+      url: this.get("connector").getApiLocaleBase() + 'occurrences/',
       crossDomain: true,
       dataType: 'json',
       data: data

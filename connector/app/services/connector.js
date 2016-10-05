@@ -16,6 +16,7 @@ import Ember from 'ember';
  *
  */
 var connectorService = Ember.Service.extend({
+  i18n: Ember.inject.service(),
 
   scheduleAppointment: function(params) {
     var connector = this;
@@ -23,11 +24,12 @@ var connectorService = Ember.Service.extend({
       connector.getToken().done(function(result) {
         Ember.$.ajax({
           type: 'POST',
-          url: 'https://connector.getcoveredamerica.org/api/appointments/',
+          url: connector.getApiLocaleBase() + 'appointments/',
           crossDomain: true,
           dataType: 'json',
           data: params
         }).done(function(result){
+          console.log(result);
           // There is a status property that might be useful (result.status == 1)
           if(result.status == 1) {
             connector.set('confirmation', result);
@@ -43,8 +45,19 @@ var connectorService = Ember.Service.extend({
   },
   getToken: function() {
     return Ember.$.ajax({
-      url: 'https://connector.getcoveredamerica.org/api/me/'
+      url: this.getApiLocaleBase() + 'me/'
     });
+  },
+  getApiLocaleBase: function() {
+    var locale = this.get('i18n.locale');
+    switch(locale) {
+      case 'es':
+        //return "https://connector.getcoveredamerica.org/es-us/api/";
+      case 'en':
+        //return "https://connector.getcoveredamerica.org/api/";
+      default:
+        return "https://connector.getcoveredamerica.org/api/";
+    }
   },
 });
 
