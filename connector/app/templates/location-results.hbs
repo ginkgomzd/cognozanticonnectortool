@@ -11,10 +11,10 @@
         </td>
         <td class="right">
           {{#if item.appointments_available }}
-            <p><strong>Next available appointment: </strong>{{item.next_available}}</p>
-            <button {{action 'scheduleAppointment' item}} class="btn btn-primary btn-partner btn">Schedule Online</button>
+            <p><strong>{{t "form-controls.results.next-available"}}: </strong>{{item.next_available}}</p>
+            <button {{action 'scheduleAppointment' item}} class="btn btn-primary btn-partner btn">{{t "form-controls.buttons.schedule"}}</button>
           {{else}}
-            <p><strong>No available appointments</strong></p>
+            <p><strong>{{t "form-controls.results.no-available"}}</strong></p>
           {{/if}}
         </td>
       </tr>
@@ -28,10 +28,10 @@
       </td>
       <td class="right">
         {{#if item.appointments_available }}
-          <p><strong>Next available appointment: </strong>{{item.next_available}}</p>
-          <button {{action 'scheduleAppointment' item}} class="btn btn-primary btn">Schedule Online</button>
+          <p><strong>{{t "form-controls.results.next-available"}}: </strong>{{item.next_available}}</p>
+          <button {{action 'scheduleAppointment' item}} class="btn btn-primary btn">{{t "form-controls.buttons.schedule"}}</button>
         {{else}}
-          <p><strong>No available appointments</strong></p>
+          <p><strong>{{t "form-controls.results.no-available"}}</strong></p>
         {{/if}}
       </td>
     </tr>
