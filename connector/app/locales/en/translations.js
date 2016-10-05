@@ -23,7 +23,13 @@ export default {
   "form-controls": {
     "zipcode": "Enter Your ZIP Code",
     "search-radius": "Search Within",
-    "language": "Language",
+    "language": {
+      "label": "Language",
+      "options": {
+        "tel": "Phone translation (all languages)",
+        "all": "All"
+      }
+    },
     "application-type": {
       "label": "Type of Application",
       "options": {
@@ -40,6 +46,7 @@ export default {
       "schedule": "Schedule Online",
       "find-location": "Find a Location",
       "back": "Back",
+      "select": "Select",
       "default": "Search"
     },
     "results": {
@@ -72,7 +79,7 @@ export default {
   "misc": {
     "languages": {
       "all": "All",
-      "phone": "Phone translation (all languages)",
+      "phone": "",
     }
   }
 

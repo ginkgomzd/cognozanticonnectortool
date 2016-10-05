@@ -101,10 +101,10 @@ export default Ember.Controller.extend({
   }.property(),
   languageOptions: function() {
     return [
-      {id: "", label: this.get('i18n').t('misc.languages.all')},
+      {id: "", label: this.get('i18n').t('form-controls.language.options.all')},
       {id: "en", label: 'English'},
       {id: "es", label: 'Spanish'},
-      {id: "tel", label: this.get('i18n').t('misc.languages.phone')},
+      {id: "tel", label: this.get('i18n').t('form-controls.language.options.tel')},
       {id: "cpe", label: 'Creole'},
       {id: "it", label: 'Italian'},
       {id: "ko", label: 'Korean'},
