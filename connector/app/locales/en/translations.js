@@ -77,6 +77,7 @@ export default {
     "no-location": "We failed to find the location you selected. Please return to the location search page and try again.",
     "no-appointment": "I'm sorry, we had some trouble loading that appointment time. Please try again.",
     "continued": "If you continue to receive this error, please contact a system administrator",
+    "valid-phone": "Please specify a valid phone number",
     "no-results": "No Results Found",
     "default": "An unknown error occurred"
   },

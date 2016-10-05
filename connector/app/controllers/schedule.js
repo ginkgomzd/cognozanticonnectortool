@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   utils: Ember.inject.service('utils'),
   connector: Ember.inject.service('connector'),
+  i18n: Ember.inject.service(),
   formId: "appointment-scheduler",
   results: function() {return [];}.property(),
   appointment: function() {
@@ -26,7 +27,7 @@ export default Ember.Controller.extend({
   validate: function() {
     var valid = this.get("utils").validatePhone(this.get("userInput").phone);
     if(!valid) {
-      this.set("confirmationError", "Please specify a valid phone number");
+      this.set("confirmationError", this.get('i18n').t('errors.valid-phone'));
     }
 
     return valid;
