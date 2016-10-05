@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('location', { path:'/' });
+  this.route('language', { path:'/:language' });
   this.route('available');
   this.route('schedule');
   this.route('confirm');
