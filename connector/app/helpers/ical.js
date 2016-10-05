@@ -12,5 +12,5 @@ export default Ember.Helper.helper(function(params) {
   if (cal === undefined) {
     cal = 'Google';
   }
-  return new Ember.String.htmlSafe('<a class="btn" href="https://connector.getcoveredamerica.org/api/appointments-ical/'+guid+'?calendar='+cal.toLowerCase()+'">'+cal+'</a>');
+  return new Ember.String.htmlSafe('<a target="_blank" class="btn" href="https://connector.getcoveredamerica.org/api/appointments-ical/'+guid+'?calendar='+cal.toLowerCase()+'">'+cal+'</a>');
 });
