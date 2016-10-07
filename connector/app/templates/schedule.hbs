@@ -1,5 +1,5 @@
 {{#if appointment}}
-  {{#link-to 'available' class="btn btn-primary"}}{{t "form-controls.buttons.back"}}{{/link-to}}
+  {{#link-to 'available'}}{{t "form-controls.buttons.back"}}{{/link-to}}
   <div class="appointment-preconfirm row">
     <div class="col-sm-4">
       {{event-time appointment.local_start_time appointment.local_end_time}}
@@ -16,30 +16,30 @@
   <form id="appointment-scheduler" data-partner="" {{action "schedule" on="submit"}}>
     <fieldset class="row">
       <div class="col-sm-6 col-md-3 form-group">
-        <label for="firstName">{{t "form-controls.first-name.label"}}:</label>
-        {{input type="text" class="form-control" id="firstName" name="firstName" value=userInput.first_name placeholder=(t "form-controls.first-name.placeholder") required=true}}
+        <label class="home-form-label" for="firstName">{{t "form-controls.first-name.label"}}:</label>
+        {{input type="text" class="form-control w-input" id="firstName" name="firstName" value=userInput.first_name placeholder=(t "form-controls.first-name.placeholder") required=true}}
       </div>
       <div class="col-sm-6 col-md-3 form-group">
-        <label for="LastName">{{t "form-controls.last-name.label"}}:</label>
-        {{input type="text" class="form-control" id="LastName" name="LastName" value=userInput.last_name placeholder=(t "form-controls.last-name.placeholder") required=true}}
+        <label class="home-form-label" for="LastName">{{t "form-controls.last-name.label"}}:</label>
+        {{input type="text" class="form-control w-input" id="LastName" name="LastName" value=userInput.last_name placeholder=(t "form-controls.last-name.placeholder") required=true}}
       </div>
       <div class="col-sm-6 col-md-3 form-group">
-        <label for="email">{{t "form-controls.email.label"}}:</label>
-        {{input type="email" id="email" name="email" class="form-control" value=userInput.email placeholder=(t "form-controls.email.placeholder")}}
+        <label class="home-form-label" for="email">{{t "form-controls.email.label"}}:</label>
+        {{input type="email" id="email" name="email" class="form-control w-input" value=userInput.email placeholder=(t "form-controls.email.placeholder")}}
       </div>
       <div class="col-sm-6 col-md-3 form-group">
-        <label for="phone">{{t "form-controls.email.label"}}:</label>
-        {{input type="tel" id="phone" name="phone" class="form-control" value=userInput.phone placeholder=(t "form-controls.phone.placeholder") required=true}}
+        <label class="home-form-label" for="phone">{{t "form-controls.email.label"}}:</label>
+        {{input type="tel" id="phone" name="phone" class="form-control w-input" value=userInput.phone placeholder=(t "form-controls.phone.placeholder") required=true}}
       </div>
       <div class="col-sm-12 form-group">
-        <label for="optInEmail">{{t "form-controls.opt-in-email"}}</label>
+        <label class="home-form-label" for="optInEmail">{{t "form-controls.opt-in-email"}}</label>
         {{input type="checkbox" name="optInEmail" id="optInEmail" checked=userInput.optInEmail}}
       </div>
       <div class="col-sm-12 btn-wrapper error">
         <p>{{confirmationError}}</p>
       </div>
       <div class="col-sm-12 btn-wrapper">
-        <button class="btn btn-lg btn-primary" role="button" id="schedule-btn">{{t "form-controls.buttons.schedule"}}</button>
+        <button class="w-button home-form-submit" role="button" id="schedule-btn">{{t "form-controls.buttons.schedule"}}</button>
       </div>
     </fieldset>
   </form>

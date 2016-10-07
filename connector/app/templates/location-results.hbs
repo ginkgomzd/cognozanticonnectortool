@@ -1,6 +1,6 @@
 <!--location-list partners=partnerResults.results others=otherResults.results showPartnerResults=showPartnerResults btnClick="scheduleAppointment"//-->
 
-<table class="table table-striped">
+<table class="location-results-table-table table table-striped">
   <tbody>
   {{#if showPartnerResults}}
     {{#each partnerResults as |item|}}
@@ -12,7 +12,7 @@
         <td class="right">
           {{#if item.appointments_available }}
             <p><strong>{{t "form-controls.results.next-available"}}: </strong>{{item.next_available}}</p>
-            <button {{action 'scheduleAppointment' item}} class="btn btn-primary btn-partner btn">{{t "form-controls.buttons.schedule-online"}}</button>
+            <button {{action 'scheduleAppointment' item}} class="w-button home-form-submit">{{t "form-controls.buttons.schedule-online"}}</button>
           {{else}}
             <p><strong>{{t "form-controls.results.no-available"}}</strong></p>
           {{/if}}
@@ -29,7 +29,7 @@
       <td class="right">
         {{#if item.appointments_available }}
           <p><strong>{{t "form-controls.results.next-available"}}: </strong>{{item.next_available}}</p>
-          <button {{action 'scheduleAppointment' item}} class="btn btn-primary btn">{{t "form-controls.buttons.schedule-online"}}</button>
+          <button {{action 'scheduleAppointment' item}} class="home-form-submit w-button">{{t "form-controls.buttons.schedule-online"}}</button>
         {{else}}
           <p><strong>{{t "form-controls.results.no-available"}}</strong></p>
         {{/if}}

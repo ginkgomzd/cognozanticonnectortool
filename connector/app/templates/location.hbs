@@ -1,35 +1,71 @@
-<form id="assister-scheduler" data-partner="" {{action "searchLocations" on="submit"}}>
-  <header>
-    <img class="logo" src="img/logo.png" height="138" width="138">
-    <div class="intro-text">
-      <h3 class="subheading-lg">{{t "location.title"}}</h3>
-      <p>{{t "location.copy"}}</p>
-    </div>
-  </header>
-  <fieldset class="row">
-    <div class="col-sm-4 form-group">
-      <label for="near">{{t "form-controls.zipcode"}}:</label>
-      {{input class="form-control" type="text" id="near" value=userInput.near placeholder=(t "form-controls.zipcode") required=true}}
-    </div>
-    <div class="col-sm-4 form-group">
-      <label for="radius">{{t "form-controls.search-radius"}}:</label>
-      {{select-widget enabled=true options=radiusOptions value=userInput.radius class="form-control"}}
-    </div>
-    <div class="col-sm-4 form-group">
-      <label for="language">{{t "form-controls.language.label"}}:</label>
-      {{select-widget options=languageOptions optionValue="id" optionLabel="label"
-      value=userInput.language id="language_select" class="form-control"}}
-    </div>
-    <div class="btn-wrapper">
-      <button class="btn btn-lg btn-primary" role="button" id="location-search-btn">{{t "form-controls.buttons.search-for-help"}}</button>
-    </div>
-  </fieldset>
-  <div id="location-results-container" class="results-container">{{outlet}}</div>
+<div class="w-form">
+    <form data-name="Email Form" id="assister-scheduler" name="email-form" data-partner="" {{action "searchLocations" on="submit"}}>
+        <fieldset>
+            <div class="w-row">
+                <div class="w-col w-col-4">
+                    <label class="home-form-label" for="name">Enter Your ZIP Code:</label>
+                    {{input class="form-control home-form-input w-input" type="text" id="near" value=userInput.near placeholder=(t "form-controls.zipcode") required=true}}
+                </div>
+                <div class="w-col w-col-4">
+                    <label class="home-form-label" for="field">Search Within:</label>
+                    {{select-widget enabled=true options=radiusOptions value=userInput.radius class="form-control w-select"}}
+                </div>
+                <div class="w-col w-col-4">
+                    <label class="home-form-label" for="field-2">Language:</label>
+                    {{select-widget options=languageOptions optionValue="id" optionLabel="label"
+                    value=userInput.language id="language_select" class="form-control w-select"}}
+                </div>
+            </div>
+        </fieldset>
+        <div class="btn-wrapper home-form-submit-div">
+            <input id="location-search-btn" class="home-form-submit w-button" data-wait="Please wait..." type="submit" value="{{t "form-controls.buttons.search-for-help"}}">
+        </div>
 
-  <input type="hidden" name="postal_code">
-  <input type="hidden" name="source" id="source">
-  <input type="hidden" name="sms_optin" value="1">
-  <input type="hidden" name="email_optin" value="1" checked>
+        <input type="hidden" name="postal_code">
+        <input type="hidden" name="source" id="source">
+        <input type="hidden" name="sms_optin" value="1">
+        <input type="hidden" name="email_optin" value="1" checked>
+
+    </form>
+</div>
+
+<div id="location-results-container" class="results-container">{{outlet}}</div>
+{{partial "location-results"}}
+
+{{!--
+<form id="assister-scheduler" data-partner="" {{action "searchLocations" on="submit"}}>
+    <header>
+        <img class="logo" src="img/logo.png" height="138" width="138">
+        <div class="intro-text">
+            <h3 class="subheading-lg">{{t "location.title"}}</h3>
+            <p>{{t "location.copy"}}</p>
+        </div>
+    </header>
+    <fieldset class="row">
+        <div class="col-sm-4 form-group">
+            <label for="near">{{t "form-controls.zipcode"}}:</label>
+          {{input class="form-control" type="text" id="near" value=userInput.near placeholder=(t "form-controls.zipcode") required=true}}
+        </div>
+        <div class="col-sm-4 form-group">
+            <label for="radius">{{t "form-controls.search-radius"}}:</label>
+          {{select-widget enabled=true options=radiusOptions value=userInput.radius class="form-control"}}
+        </div>
+        <div class="col-sm-4 form-group">
+            <label for="language">{{t "form-controls.language.label"}}:</label>
+          {{select-widget options=languageOptions optionValue="id" optionLabel="label"
+          value=userInput.language id="language_select" class="form-control"}}
+        </div>
+        <div class="btn-wrapper">
+            <button class="btn btn-lg btn-primary" role="button" id="location-search-btn">{{t "form-controls.buttons.search-for-help"}}</button>
+        </div>
+    </fieldset>
+    <div id="location-results-container" class="results-container">{{outlet}}</div>
+
+    <input type="hidden" name="postal_code">
+    <input type="hidden" name="source" id="source">
+    <input type="hidden" name="sms_optin" value="1">
+    <input type="hidden" name="email_optin" value="1" checked>
 </form>
 
 {{partial "location-results"}}
+--}}
