@@ -1,0 +1,87 @@
+#connector-wrapper {
+  padding: 15px 0;
+}
+
+#connector-api {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#connector-api header {
+  margin-bottom: 15px;
+  min-height: 138px; /* to accommodate the logo */
+}
+
+#connector-api header img.logo {
+  background: #429745;
+  float: left;
+}
+
+#connector-api header .intro-text {
+  margin-left: 160px;
+}
+
+#connector-api .intro-text h3 {
+  color: #044060;
+  font-size: 2.5em;
+  text-transform: uppercase;
+}
+
+#connector-api fieldset {
+  background: #E5E5E5;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+#connector-api fieldset .btn-wrapper {
+  clear: both;
+  text-align: center;
+}
+
+#connector-api .btn-primary {
+  background: #044060;
+}
+
+#connector-api .btn-partner {
+  background: #429745;
+}
+
+#connector-api .results-container td {
+  vertical-align: middle;
+}
+
+#connector-api .event_time span {
+  display: block;
+}
+
+#connector-api .event_time .event_time-dow {
+  font-weight: bold;
+}
+
+#connector-api .error {
+  color: #FF0000;
+}
+
+.right {
+  text-align: right;
+}
+
+/** Rules adapted from inline elements **/
+#wsb-canvas-template-page {
+  margin: auto;
+  max-width: 1018px;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.wsb-canvas-page-container {
+  min-height: 100%;
+  position: relative;
+}
+
+#wsb-canvas-template-container {
+  position: relative;
+}
+
+#connector-wrapper {
+  position: relative;
+}
