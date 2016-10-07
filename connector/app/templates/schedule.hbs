@@ -1,17 +1,18 @@
+{{#link-to 'available'}}{{t "form-controls.buttons.back"}}{{/link-to}}<br><br>
+
 {{#if appointment}}
-  {{#link-to 'available'}}{{t "form-controls.buttons.back"}}{{/link-to}}
   <div class="appointment-preconfirm row">
     <div class="col-sm-4">
       {{event-time appointment.local_start_time appointment.local_end_time}}
-    </div>
+    </div><br>
     <div class="col-sm-4">
       {{appt-event-title appointment}}
       {{location-address-block location}}
       {{map-link location=location}}
-    </div>
+    </div><br>
     <div class="col-sm-4">
       {{accommodations-list items=appointment.accommodations}}
-    </div>
+    </div><br>
   </div>
   <form id="appointment-scheduler" data-partner="" {{action "schedule" on="submit"}}>
     <fieldset class="row">

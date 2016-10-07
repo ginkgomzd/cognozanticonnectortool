@@ -38,4 +38,45 @@
   {{/each}}
   </tbody>
 </table>
+
+<div class="location-results-mobile">
+    <hr>
+    {{#if showPartnerResults}}
+        {{#each partnerResults as |item|}}
+            <div style="margin-bottom:15px;">
+                <div>
+                    {{location-address-block item}}
+                    {{map-link location=item}}
+                </div>
+                <div>
+                    {{#if item.appointments_available }}
+                        <p><strong>{{t "form-controls.results.next-available"}}: </strong>{{item.next_available}}</p>
+                        <button {{action 'scheduleAppointment' item}} class="w-button home-form-submit">{{t "form-controls.buttons.schedule-online"}}</button>
+                    {{else}}
+                        <p><strong>{{t "form-controls.results.no-available"}}</strong></p>
+                    {{/if}}
+                </div>
+            </div>
+            <hr>
+        {{/each}}
+    {{/if}}
+    {{#each otherResults as |item|}}
+        <div>
+            <div>
+                {{location-address-block item}}
+                {{map-link location=item}}
+            </div>
+            <div>
+                {{#if item.appointments_available }}
+                    <p><strong>{{t "form-controls.results.next-available"}}: </strong>{{item.next_available}}</p>
+                    <button {{action 'scheduleAppointment' item}} class="home-form-submit w-button">{{t "form-controls.buttons.schedule-online"}}</button>
+                {{else}}
+                    <p><strong>{{t "form-controls.results.no-available"}}</strong></p>
+                {{/if}}
+            </div>
+        </div>
+        <hr>
+    {{/each}}
+</div>
+
 {{prev-next nextAction="nextPage" previousAction="previousPage" next=hasNext prev=hasPrev}}

@@ -12,9 +12,12 @@ export default Ember.Helper.helper(function(params) {
   var dE = new Date(end);
 
 
-  var time = '<span class="event_time-dow">' + dS.toLocaleDateString('en-US', {weekday: 'long'}) + '</span>';
-  time += '<span class="event_time-month_date">' + dS.toLocaleDateString('en-US', {month: 'long', day: 'numeric'}) + '</span>';
-  time += '<span class="event_time-start_time">' + dS.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', timeZoneName: 'short'});
+  var time = '';
+
+  // Weekday not working in safari for some reason
+  // time += '<span class="event_time-dow">' + dS.toLocaleDateString('en-US', {weekday: 'long'}) + '</span>';
+  time += '<span class="event_time-month_date">' + dS.toLocaleDateString('en-US', {month: 'short', day: 'numeric'}) + ', </span>';
+  time += '<span class="event_time-start_time">' + dS.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', timeZoneName: 'short'}) + ', </span>';
 
   var diff = (dE - dS); // in milliseconds
   var minutes = Math.floor((diff/1000)/60); // first convert to seconds, then minutes, then whole minutes

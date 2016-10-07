@@ -1,33 +1,61 @@
 <div id="appointments-results-container" class="results-container">
-  {{#if results}}
-    <table class="table table-striped">
-      <thead>
-      <th>{{t "words.accommodations"}}</th>
-      <th>{{t "words.time"}}</th>
-      <th>{{t "words.location"}}</th>
-      <th class="sr-only">{{t "words.select"}}</th>
-      </thead>
-      <tbody>
-      {{#each results as |result|}}
-        <tr>
-          <td>
-            {{accommodations-list items=result.accommodations}}
-          </td>
-          <td>
-            {{event-time result.local_start_time result.local_end_time}}
-          </td>
-          <td>
-            {{appt-event-title result}}
-            {{location-address-block result.location}}
-            {{map-link location=result.location}}
-          </td>
-          <td>
-            <button {{action 'gotoSchedule' result}} class="w-button home-form-submit" role="button">{{t "form-controls.buttons.select"}}</button>
-          </td>
-        </tr>
-      {{/each}}
-      </tbody>
-    </table>
-    {{prev-next nextAction="nextPage" previousAction="previousPage" next=hasNext prev=hasPrev}}
-  {{/if}}
+    {{#if results}}
+        <table class="table table-striped">
+            <thead>
+            <th>{{t "words.accommodations"}}</th>
+            <th>{{t "words.time"}}</th>
+            <th>{{t "words.location"}}</th>
+            <th class="sr-only">{{t "words.select"}}</th>
+            </thead>
+            <tbody>
+            {{#each results as |result|}}
+                <tr>
+                    <td>
+                        {{accommodations-list items=result.accommodations}}
+                    </td>
+                    <td>
+                        {{event-time result.local_start_time result.local_end_time}}
+                    </td>
+                    <td>
+                        {{appt-event-title result}}
+                        {{location-address-block result.location}}
+                        {{map-link location=result.location}}
+                    </td>
+                    <td>
+                        <button {{action 'gotoSchedule' result}} class="w-button home-form-submit" role="button">{{t "form-controls.buttons.select"}}</button>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <div class="mobile">
+            <hr>
+            <!--<th class="sr-only">{{t "words.select"}}</th>-->
+            {{#each results as |result|}}
+                <div>
+                    {{event-time result.local_start_time result.local_end_time}}<br>
+
+                    {{t "words.accommodations"}}:
+                    {{#if result.accommodations}}
+                        <br>{{accommodations-list items=result.accommodations}}
+                    {{else}}
+                        None.<br>
+                    {{/if}}
+                    <br>
+
+
+                    {{t "words.location"}}<br>
+                    {{appt-event-title result}}
+                    {{location-address-block result.location}}
+                    {{map-link location=result.location}}<br>
+
+                    <button {{action 'gotoSchedule' result}} class="w-button home-form-submit" role="button">{{t "form-controls.buttons.select"}}</button>
+                </div>
+                <hr>
+            {{/each}}
+        </div>
+
+        {{prev-next nextAction="nextPage" previousAction="previousPage" next=hasNext prev=hasPrev}}
+    {{/if}}
 </div>
