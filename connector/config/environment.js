@@ -42,6 +42,11 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
+  if (environment === 'widget') {
+    ENV.APP.rootElement = '#connector-widget';
+    ENV.locationType = 'hash';
+  }
+
   if (environment === 'production') {
 
   }
