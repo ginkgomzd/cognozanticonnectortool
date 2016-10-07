@@ -17,4 +17,5 @@ The following will build the stand-alone tool (aka production) at ../public_html
 `ember build`
 
 ## Building widget
-The following will build the widget version of the tool at ../public_html
+The following will build the widget version of the tool at ../public_html.  See drupal theme source for instructions on how to install to drupal theme.
+`ember build --environment=widget`
