@@ -45,6 +45,7 @@ module.exports = function(environment) {
   if (environment === 'widget') {
     ENV.APP.rootElement = '#connector-widget';
     ENV.locationType = 'hash';
+    ENV.rootURL = '/';
   }
 
   if (environment === 'production') {
