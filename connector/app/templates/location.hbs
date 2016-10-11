@@ -3,15 +3,15 @@
         <fieldset>
             <div class="w-row">
                 <div class="w-col w-col-4">
-                    <label class="home-form-label" for="name">Enter Your ZIP Code:</label>
+                    <label class="home-form-label" for="name">{{t "form-controls.zipcode"}}:</label>
                     {{input class="form-control home-form-input w-input" type="text" id="near" value=userInput.near placeholder=(t "form-controls.zipcode") required=true}}
                 </div>
                 <div class="w-col w-col-4">
-                    <label class="home-form-label" for="field">Search Within:</label>
+                    <label class="home-form-label" for="field">{{t "form-controls.search-radius"}}:</label>
                     {{select-widget enabled=true options=radiusOptions value=userInput.radius class="form-control w-select"}}
                 </div>
                 <div class="w-col w-col-4">
-                    <label class="home-form-label" for="field-2">Language:</label>
+                    <label class="home-form-label" for="field-2">{{t "form-controls.language.label"}}:</label>
                     {{select-widget options=languageOptions optionValue="id" optionLabel="label"
                     value=userInput.language id="language_select" class="form-control w-select"}}
                 </div>
